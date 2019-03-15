@@ -3,6 +3,7 @@ version: "3"
 services:
   homeassistant:
     image: homeassistant/home-assistant:0.85.1
+    user: 1000:1000
     volumes:
       - ./config/homeassistant/:/config
       - /etc/localtime:/etc/localtime:ro
@@ -27,6 +28,7 @@ services:
       - homeassistant
   influxdb:
     image: influxdb:1.7.1
+    user: 1000:1000
     volumes:
       - ./config/influxdb:/var/lib/influxdb
     ports:
