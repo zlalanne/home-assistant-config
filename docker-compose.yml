@@ -1,0 +1,73 @@
+version: "3"
+
+services:
+  homeassistant:
+    image: homeassistant/home-assistant:0.85.1
+    volumes:
+      - ./config/homeassistant/:/config
+      - /etc/localtime:/etc/localtime:ro
+      - /tmp/gifs:/camera_gifs
+    network_mode: "host"
+    devices:
+      - "/dev/ttyACM0:/dev/zwave:rmw"
+    depends_on:
+      - influxdb
+      - mosquitto
+  appdaemon:
+    image: acockburn/appdaemon:3.0.1
+    volumes:
+      - $PWD/appdaemon/conf:/conf
+      - /etc/localtime:/etc/localtime:ro
+    network_mode: "host"
+    ports:
+      - "5050:5050"
+    environment:
+      - HA_URL="http://localhost:8123"
+    depends_on:
+      - homeassistant
+  influxdb:
+    image: influxdb:1.7.1
+    volumes:
+      - ./config/influxdb:/var/lib/influxdb
+    ports:
+      - "8086:8086"
+    environment:
+      - "INFLUXDB_DB=home_assistant"
+  grafana:
+    image: grafana/grafana:5.3.4
+    volumes:
+      - $PWD/grafana:/var/lib/grafana
+    network_mode: "host"
+    ports:
+      - "3000:3000"
+    depends_on:
+      - influxdb
+  mosquitto:
+    image: eclipse-mosquitto:1.5.4
+    user: 1000:1000
+    volumes:
+      - ./config/mosquitto/data:/mosquitto/data
+      - ./config/mosquitto/log:/mosquitto/log
+      - ./config/mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+  openzwave:
+    image: ruimarinho/openzwave
+    devices:
+      - "/dev/ttyACM0"
+    volumes:
+      - $PWD/configuration/options.xml:/root/open-zwave-control-panel/config/options.xml
+      - $PWD/configuration/zwcfg_0xc411c974.xml:/root/open-zwave-control-panel/zwcfg_0xc411c974.xml
+    ports:
+      - "8090:8090"
+  portainer:
+    image: portainer/portainer
+    volumes:
+      - ${PWD}/portainer:/data
+      - /var/run/docker.sock:/var/run/docker.sock
+    network_mode: "host"
+    ports:
+      - "9000:9000"
+
+    
