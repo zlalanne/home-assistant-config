@@ -2,7 +2,7 @@ version: "3"
 
 services:
   homeassistant:
-    image: homeassistant/home-assistant:0.85.1
+    image: homeassistant/home-assistant:0.89.2
     user: 1000:1000
     volumes:
       - ./config/homeassistant/:/config
@@ -14,6 +14,25 @@ services:
     depends_on:
       - influxdb
       - mosquitto
+  postgres:
+    image: postgres:11.2
+    user: 1000:1000
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./config/postgres/data:/var/lib/postgresql/data
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      - POSTGRES_PASSWORD=homeassistant
+      - POSTGRES_USER=homeassistant
+      - POSTGRES_DB=homeassistant
+  pgadmin:
+    image: thajeztah/pgadmin4:3.6
+    user: 1000:1000
+    ports:
+      - "8087:5050"
+    volumes:
+      - ./config/pgadmin:/pgadmin
   appdaemon:
     image: acockburn/appdaemon:3.0.1
     volumes:
@@ -37,9 +56,9 @@ services:
       - "INFLUXDB_DB=home_assistant"
   grafana:
     image: grafana/grafana:5.3.4
+    user: 1000:1000
     volumes:
-      - $PWD/grafana:/var/lib/grafana
-    network_mode: "host"
+      - ./config/grafana:/var/lib/grafana
     ports:
       - "3000:3000"
     depends_on:
@@ -64,12 +83,11 @@ services:
     ports:
       - "8090:8090"
   portainer:
-    image: portainer/portainer
+    image: portainer/portainer:1.20.2
+    user: 1000:999
     volumes:
-      - ${PWD}/portainer:/data
+      - ./config/portainer:/data
       - /var/run/docker.sock:/var/run/docker.sock
     network_mode: "host"
     ports:
       - "9000:9000"
-
-    
