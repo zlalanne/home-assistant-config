@@ -1,0 +1,9 @@
+---
+
+- platform: sonarr
+  api_key: !secret sonarr_api_key
+  host: 192.168.1.2
+
+- platform: radarr
+  api_key: !secret radarr_api_key
+  host: 192.168.1.2

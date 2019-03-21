@@ -2,14 +2,14 @@ homeassistant:
   # Name of the location where Home Assistant is running
   name: Home
   # Location required to calculate the time the sun rises and sets
-  latitude: 0
-  longitude: 0
+  latitude: !secret latitude
+  longitude: !secret longitude
   # Impacts weather/sunrise data (altitude above sea level in meters)
-  elevation: 0
+  elevation: !secret sea_level
   # metric for Metric, imperial for Imperial
-  unit_system: metric
+  unit_system: imperial
   # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-  time_zone: UTC
+  time_zone: America/Chicago
   # Customization file
   customize: !include customize.yaml
 
@@ -30,7 +30,8 @@ config:
 # https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
 updater:
   # Optional, allows Home Assistant developers to focus on popular components.
-  # include_used_components: true
+  reporting: true
+  include_used_components: true
 
 # Allows you to issue voice commands from the frontend in enabled browsers
 #conversation:
@@ -41,6 +42,22 @@ history:
 # View all events in a logbook
 logbook:
 
+influxdb:
+  host: localhost
+  port: 8086
+  database: home_assistant
+  include:
+    entities:
+      - sensor.speedtest_download
+      - sensor.speedtest_upload
+
+recorder:
+  db_url: !secret database
+  # The number of history days to keep in recorder database after a purge
+  purge_keep_days: 3
+  # How often (in days) the purge task runs
+  purge_interval: 1
+
 # Enables a map showing the location of tracked devices
 map:
 
@@ -50,13 +67,23 @@ sun:
 # Text to speech
 tts:
   - platform: google
+    cache: true
+    cache_dir: /tmp/tts
+    time_memory: 300
 
 # Cloud
 cloud:
+  google_actions:
+    filter:
+      exclude_domains:
+        - group
 
-group: !include groups.yaml
-automation: !include automations.yaml
-script: !include scripts.yaml
+# Chromecast
+cast:
+  media_player:
+    - host: 192.168.1.7
+    - host: 192.168.1.8
+    - host: 192.168.1.10
 
 panel_custom:
   - name: zwavegraph2
@@ -66,6 +93,47 @@ panel_custom:
 
 zwave:
   usb_path: /dev/zwave
-  network_key: "0x99, 0xb3, 0x1b, 0x04, 0x9b, 0x86, 0xe6, 0x89, 0xab, 0x95, 0x88, 0xe6, 0x7b, 0xe4, 0x82, 0x3a"
+  network_key: !secret zwave_network_key
 
+system_health:
 
+speedtestdotnet:
+  scan_interval:
+    hours: 6
+  monitored_conditions:
+    - download
+    - upload
+    - ping
+
+sensor: !include_dir_merge_list sensors
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+
+lovelace:
+  mode: yaml
+
+asuswrt:
+  host: !secret router_host_ip
+  username: !secret router_username
+  password: !secret router_password
+  protocol: telnet
+  port: 23
+
+camera:
+  - platform: uvc
+    nvr: 192.168.1.2
+    key: !secret unifi_video_api_key
+    password: !secret unifi_video_camera_password
+
+stream:
+
+person:
+  - name: Zack
+    id: zack
+    device_trackers:
+      - device_tracker.zack_phone
+  - name: Nicole
+    id: nicole
+    device_trackers:
+      - device_tracker.nicole_laptop

@@ -1,0 +1,28 @@
+# Generic ignores
+*.log
+*.db
+*.db-shm
+*.db-wal
+*.pyc
+._*
+__pycache__
+
+# Dirs to ignore
+.storage
+.cloud
+.google.token
+deps
+
+# Files to ignore
+ip_bans.yaml
+secrets.yaml
+known_devices.yaml
+OZW_Log.txt
+.uuid
+pyozw.sqlite
+options.xml
+zwcfg_*
+zwscene.xml
+
+# Specific keeps
+!.gitkeep
