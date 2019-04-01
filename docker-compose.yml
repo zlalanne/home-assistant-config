@@ -34,15 +34,13 @@ services:
     volumes:
       - ./config/pgadmin:/pgadmin
   appdaemon:
-    image: acockburn/appdaemon:3.0.1
+    image: acockburn/appdaemon:3.0.2
+    user: 1000:1000
     volumes:
-      - $PWD/appdaemon/conf:/conf
+      - ./config/appdaemon:/conf
       - /etc/localtime:/etc/localtime:ro
-    network_mode: "host"
     ports:
       - "5050:5050"
-    environment:
-      - HA_URL="http://localhost:8123"
     depends_on:
       - homeassistant
   influxdb:
