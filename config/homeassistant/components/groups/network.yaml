@@ -1,0 +1,8 @@
+---
+
+network:
+  name: Network
+  view: yes
+  entities:
+    - group.pihole
+    - group.network_speeds

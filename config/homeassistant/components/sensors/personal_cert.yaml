@@ -1,0 +1,5 @@
+---
+
+platform: cert_expiry
+host: lalanne.network
+name: Personal SSL Certificate Expiry

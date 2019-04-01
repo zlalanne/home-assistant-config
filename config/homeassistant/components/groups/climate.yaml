@@ -1,0 +1,9 @@
+---
+
+house_climate:
+  name: House Climate
+  entities:
+    - sensor.garage_temperature
+    - sensor.office_temperature
+    - sensor.garage_humidity
+    - sensor.office_humidity

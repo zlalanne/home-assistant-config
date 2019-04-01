@@ -1,0 +1,17 @@
+---
+
+alias: Turn on Lights when Garage Door opens
+trigger:
+  - platform: state
+    entity_id: cover.garage_door
+    to: 'open'
+condition:
+  - condition: state
+    entity_id: sun.sun
+    state: 'below_horizon'
+  - condition: time
+    after: '18:00:00'
+    before: '04:00:00'
+action:
+  - service: scene.turn_on
+    entity_id: scene.lights_greeting

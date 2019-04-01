@@ -1,0 +1,10 @@
+---
+# The asuswrt component is the main component to connect to a ASUSWRT based
+# router. This allows you to perform presence detection based on MAC address.
+#
+asuswrt:
+  host: 192.168.1.1
+  username: !secret router_username
+  password: !secret router_password
+  protocol: telnet
+  port: 23

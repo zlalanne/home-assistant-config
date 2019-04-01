@@ -1,0 +1,21 @@
+---
+
+alias: TV Time
+trigger:
+  - platform: state
+    entity_id: media_player.living_room_tv
+    to: 'playing'
+  - platform: state
+    entity_id: sun.sun
+    to: 'below_horizon'
+    from: 'above_horizon'
+condition:
+  - condition: state
+    entity_id: sun.sun
+    state: 'below_horizon'
+  - condition: state
+    entity_id: media_player.living_room_tv
+    state: 'playing'
+action:
+  - service: scene.turn_on
+    entity_id: scene.tv_time

@@ -1,0 +1,6 @@
+---
+# String lights in nursery, backyard side using Z-Wave plug
+
+platform: switch
+name: Nursery String Lights Backyard
+entity_id: switch.nursery_lights_backyard_switch

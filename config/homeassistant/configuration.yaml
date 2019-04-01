@@ -10,80 +10,7 @@ homeassistant:
   unit_system: imperial
   # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   time_zone: America/Chicago
-  # Customization file
-  customize: !include customize.yaml
-
-# Enables the frontend
-frontend:
-
-# Enables configuration UI
-config:
-
-# Uncomment this if you are using SSL/TLS, running in Docker container, etc.
-# http:
-#   base_url: example.duckdns.org:8123
-
-# Checks for available updates
-# Note: This component will send some information about your system to
-# the developers to assist with development of Home Assistant.
-# For more information, please see:
-# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
-updater:
-  # Optional, allows Home Assistant developers to focus on popular components.
-  reporting: true
-  include_used_components: true
-
-# Allows you to issue voice commands from the frontend in enabled browsers
-#conversation:
-
-# Enables support for tracking state changes over time
-history:
-
-# View all events in a logbook
-logbook:
-
-influxdb:
-  host: localhost
-  port: 8086
-  database: home_assistant
-  include:
-    entities:
-      - sensor.speedtest_download
-      - sensor.speedtest_upload
-
-recorder:
-  db_url: !secret database
-  # The number of history days to keep in recorder database after a purge
-  purge_keep_days: 3
-  # How often (in days) the purge task runs
-  purge_interval: 1
-
-# Enables a map showing the location of tracked devices
-map:
-
-# Track the sun
-sun:
-
-# Text to speech
-tts:
-  - platform: google
-    cache: true
-    cache_dir: /tmp/tts
-    time_memory: 300
-
-# Cloud
-cloud:
-  google_actions:
-    filter:
-      exclude_domains:
-        - group
-
-# Chromecast
-cast:
-  media_player:
-    - host: 192.168.1.7
-    - host: 192.168.1.8
-    - host: 192.168.1.10
+  packages: !include_dir_named components/packages
 
 panel_custom:
   - name: zwavegraph2
@@ -91,42 +18,8 @@ panel_custom:
     sidebar_icon: mdi:access-point-network
     url_path: zwave
 
-zwave:
-  usb_path: /dev/zwave
-  network_key: !secret zwave_network_key
-
-system_health:
-
-speedtestdotnet:
-  scan_interval:
-    hours: 6
-  monitored_conditions:
-    - download
-    - upload
-    - ping
-
-sensor: !include_dir_merge_list sensors
-group: !include groups.yaml
-automation: !include automations.yaml
-script: !include scripts.yaml
-
 lovelace:
   mode: yaml
-
-asuswrt:
-  host: !secret router_host_ip
-  username: !secret router_username
-  password: !secret router_password
-  protocol: telnet
-  port: 23
-
-camera:
-  - platform: uvc
-    nvr: 192.168.1.2
-    key: !secret unifi_video_api_key
-    password: !secret unifi_video_camera_password
-
-stream:
 
 person:
   - name: Zack
@@ -136,4 +29,5 @@ person:
   - name: Nicole
     id: nicole
     device_trackers:
-      - device_tracker.nicole_laptop
+      - device_tracker.nicole_phone
+

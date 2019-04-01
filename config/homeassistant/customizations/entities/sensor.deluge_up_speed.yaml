@@ -1,0 +1,4 @@
+---
+
+sensor.deluge_up_speed:
+  icon: mdi:speedometer

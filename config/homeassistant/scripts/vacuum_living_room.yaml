@@ -1,0 +1,10 @@
+---
+
+vacuum_living_room:
+  alias: "Vacuum Living Room"
+  sequence:
+    - service: vacuum.send_command
+      data:
+        entity_id: vacuum.xiaomi_vacuum_cleaner
+        command: app_zoned_clean
+        params: [[15211,24084,20261,31384,1]]

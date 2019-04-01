@@ -1,0 +1,6 @@
+---
+# String lights in nursery, courtyard side using Z-Wave plug
+
+platform: switch
+name: Nursery String Lights Courtyard
+entity_id: switch.nursery_lights_courtyard_switch

@@ -1,0 +1,5 @@
+---
+
+platform: cert_expiry
+host: selfhostedhome.com
+name: Blog SSL Certificate Expiry

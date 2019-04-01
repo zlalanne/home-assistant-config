@@ -1,0 +1,16 @@
+---
+# The influxdb component makes it possible to transfer all state changes to an
+# external InfluxDB database. I use this to feed data into grafana.
+#
+# https://www.home-assistant.io/components/influxdb/
+#
+influxdb:
+  host: localhost
+  port: 8086
+  database: home_assistant
+
+  # Whitelist of sensors to include
+  include:
+    entities:
+      - sensor.speedtest_download
+      - sensor.speedtest_upload

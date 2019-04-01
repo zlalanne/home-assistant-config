@@ -1,0 +1,9 @@
+---
+
+Media:
+  view: yes
+  entities:
+    - media_player.courtyard_tv
+    - media_player.living_room_tv
+    - media_player.kitchen_speaker
+    - sensor.plex

@@ -1,0 +1,10 @@
+---
+
+network_speeds:
+  name: Network Speeds
+  entities:
+    - sensor.deluge_up_speed
+    - sensor.deluge_down_speed
+    - sensor.speedtest_ping
+    - sensor.speedtest_upload
+    - sensor.speedtest_download

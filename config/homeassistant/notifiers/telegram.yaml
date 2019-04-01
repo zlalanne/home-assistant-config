@@ -1,0 +1,5 @@
+---
+
+name: Zack Telegram
+platform: telegram
+chat_id: !secret zack_telegram_chat_id

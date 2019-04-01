@@ -1,0 +1,8 @@
+---
+# Combine the two sets of string lights into a group
+
+platform: group
+name: Nursery String Lights
+entities:
+  - light.nursery_string_lights_courtyard
+  - light.nursery_string_lights_backyard

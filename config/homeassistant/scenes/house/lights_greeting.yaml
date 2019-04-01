@@ -1,0 +1,8 @@
+---
+
+name: Lights Greeting
+entities:
+  light.living_room_light:
+    state: on
+    transition: 10
+    brightness: 80

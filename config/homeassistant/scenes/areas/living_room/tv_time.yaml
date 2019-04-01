@@ -1,0 +1,8 @@
+---
+
+name: TV Time
+entities:
+  light.living_room_light:
+    state: on
+    transition: 10
+    brightness: 50

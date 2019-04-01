@@ -1,0 +1,10 @@
+---
+
+vacuum_room:
+  name: Choose a room to clean
+  options:
+    - Select Input
+    - Office
+    - Living Room
+    - Entryway
+  initial: Select Input

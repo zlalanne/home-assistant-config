@@ -1,0 +1,6 @@
+---
+# Shop overhead lights using a Z-Wave switch
+
+platform: switch
+name: Shop Lights
+entity_id: switch.shop_lights_switch

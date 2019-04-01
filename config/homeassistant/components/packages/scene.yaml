@@ -1,0 +1,6 @@
+---
+# This handles the loading of my scenes
+#
+# https://www.home-assistant.io/components/scene/
+#
+scene: !include_dir_list ../../scenes

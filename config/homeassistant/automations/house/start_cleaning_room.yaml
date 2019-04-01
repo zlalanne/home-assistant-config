@@ -1,0 +1,22 @@
+---
+
+alias: Start Cleaning Room
+trigger:
+  - platform: state
+    entity_id: input_select.vacuum_room
+    from: 'Select Input'
+action:
+  - service: script.turn_on
+    data_template:
+      entity_id: >
+        {% if is_state("input_select.vacuum_room", "Office") %}
+          script.vacuum_office
+        {% elif is_state("input_select.vacuum_room", "Living Room") %}
+          script.vacuum_living_room
+        {% elif is_state("input_select.vacuum_room", "Entryway") %}
+          script.vacuum_entryway
+        {% endif %}
+  - service: input_select.select_option
+    entity_id: input_select.vacuum_room
+    data_template:
+      option: "Select Input"

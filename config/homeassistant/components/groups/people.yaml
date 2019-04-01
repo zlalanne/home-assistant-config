@@ -1,0 +1,9 @@
+---
+
+people:
+  name: People
+  entities:
+    - person.zack
+    - person.nicole
+    - device_tracker.zack_phone
+    - device_tracker.nicole_phone

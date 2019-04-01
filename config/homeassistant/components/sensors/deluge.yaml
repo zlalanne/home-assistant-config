@@ -1,0 +1,9 @@
+---
+
+platform: deluge
+host: 192.168.1.2
+username: !secret deluge_username
+password: !secret deluge_password
+monitored_variables:
+  - 'download_speed'
+  - 'upload_speed'

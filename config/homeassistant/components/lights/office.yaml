@@ -1,0 +1,6 @@
+---
+# Office overhead lights using a Z-Wave switch
+
+platform: switch
+name: Office Lights
+entity_id: switch.office_lights_switch
