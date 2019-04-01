@@ -2,3 +2,7 @@ hello_world:
   module: hello
   class: HelloWorld
 
+telegram_bot:
+  module: telegram_bot
+  class: TelegramBotEventListener
+  garage: cover.garage_door
