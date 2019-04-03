@@ -2,7 +2,8 @@
 
 Welcome to my Home Assistant (and various other supporting services)
 configuration. The top-level `docker-compose.yml` file boots up all the
-services.
+services. Check out [my blog](https://selfhostedhome.com) for tutorials and
+reviews of my setup.
 
 Services Used:
 * `homeassistant` for Home Automation
