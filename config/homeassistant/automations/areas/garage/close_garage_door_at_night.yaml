@@ -1,0 +1,13 @@
+---
+
+alias: Close Garage Door
+trigger:
+  - platform: time
+    at: '21:00:00'
+condition:
+  - condition: state
+    entity_id: cover.garage_door
+    state: 'open'
+action:
+  - service: cover.close_cover
+    entity_id: cover.garage_door
