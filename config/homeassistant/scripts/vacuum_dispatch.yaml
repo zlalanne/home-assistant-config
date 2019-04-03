@@ -1,0 +1,31 @@
+---
+
+vacuum_dispatch:
+  alias: "Vacuum Dispatch"
+  sequence:
+    - service: script.turn_on
+      data_template:
+        entity_id: >-
+          {% if room|lower in ("office", "the office") %}
+            script.vacuum_office
+          {% elif room|lower in ("entryway", "the entryway") %}
+            script.vacuum_entryway
+          {% elif room|lower in ("living room", "the living room", "den", "the den") %}
+            script.vacuum_living_room
+          {% elif room|lower in ("dining room", "the dining room") %}
+            script.vacuum_dining_room
+          {% elif room|lower in ("guest room", "the guest room", "guest bedroom", "the guest bedroom") %}
+            script.vacuum_guest_bedroom
+          {% elif room|lower in ("nursery", "the nursery", "baby room", "the baby room") %}
+            script.vacuum_nursery
+          {% elif room|lower in ("master bedroom", "the master bedroom", "master", "the master") %}
+            script.vacuum_master_bedroom
+          {% elif room|lower in ("master bathroom", "the master bathroom", "master bath", "the master bath") %}
+            script.vacuum_master_bathroom
+          {% elif room|lower in ("laundry", "the laundry", "laundry room", "the laundry room") %}
+            script.vacuum_laundry_room
+          {% elif room|lower in ("kitchen", "the kitchen") %}
+            script.vacuum_kitchen
+          {% elif room|lower in ("hallways", "the hallways", "hallway", "the hallway", "walkways", "the walkways") %}
+            script.vacuum_hallways
+          {% endif %}

@@ -1,0 +1,10 @@
+---
+
+vacuum_hallways:
+  alias: "Vacuum Hallways"
+  sequence:
+    - service: script.vacuum_entryway
+    - service: script.vacuum_front_hallway
+    - service: script.vacuum_living_room_hallway
+    - service: script.vacuum_kitchen_hallway
+    - service: script.vacuum_back_hallway

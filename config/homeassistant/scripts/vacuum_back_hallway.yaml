@@ -1,0 +1,10 @@
+---
+
+vacuum_back_hallway:
+  alias: "Vacuum Back Hallway"
+  sequence:
+    - service: vacuum.send_command
+      data:
+        entity_id: vacuum.xiaomi_vacuum_cleaner
+        command: app_zoned_clean
+        params: [[16265,37878,19215,39528,1]]

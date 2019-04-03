@@ -1,0 +1,15 @@
+---
+
+alias: IFTTT Start Cleaning Room
+trigger:
+  - platform: event
+    event_type: ifttt_webhook_received
+    event_data:
+      action: call_service
+condition:
+  condition: template
+  value_template: "{{ trigger.event.data.service == 'script.vacuum_dispatch' }}"
+action:
+  service_template: '{{ trigger.event.data.service }}'
+  data_template:
+    room: '{{ trigger.event.data.room }}'

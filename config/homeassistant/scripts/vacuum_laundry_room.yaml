@@ -1,0 +1,10 @@
+---
+
+vacuum_laundry_room:
+  alias: "Vacuum Laundry Room"
+  sequence:
+    - service: vacuum.send_command
+      data:
+        entity_id: vacuum.xiaomi_vacuum_cleaner
+        command: app_zoned_clean
+        params: [[12010,37279,15260,39529,1]]

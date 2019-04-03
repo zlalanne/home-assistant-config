@@ -9,4 +9,5 @@ cloud:
     filter:
       exclude_domains:
         - group
+        - script
 
