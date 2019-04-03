@@ -1,0 +1,79 @@
+esphome:
+  name: garage
+  platform: ESP8266
+  board: nodemcuv2
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+  manual_ip:
+    static_ip: 192.168.1.70
+    subnet: 255.255.255.0
+    gateway: 192.168.1.1
+
+switch:
+  - platform: gpio
+    pin: 4
+    name: "Garage Door Relay"
+    id: relay
+    restore_mode: ALWAYS_OFF
+    internal: true
+
+binary_sensor:
+  - platform: gpio
+    pin:
+      number: 5
+      mode: INPUT_PULLUP
+    name: "Reed Switch Pin"
+    id: reed_switch
+    filters:
+      - delayed_on: 10ms
+      - delayed_off: 10ms
+    internal: true
+
+cover:
+  - platform: template
+    name: "Garage Door"
+    open_action:
+      - switch.turn_on: relay
+      - delay: 0.1s
+      - switch.turn_off: relay
+    close_action:
+      - switch.turn_on: relay
+      - delay: 0.1s
+      - switch.turn_off: relay
+    stop_action:
+      - switch.turn_on: relay
+      - delay: 0.1s
+      - switch.turn_off: relay
+    lambda: |-
+      if (id(reed_switch).state) {
+        return cover::COVER_OPEN;
+      } else {
+        return cover::COVER_CLOSED;
+      }
+
+status_led:
+    pin: 16
+
+sensor:
+  - platform: dht
+    pin: 14
+    temperature:
+      name: "Garage Temperature"
+    humidity:
+      name: "Garage Humidity"
+    model: DHT22
+    update_interval: 60s
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+
+ota:
+
+text_sensor:
+  - platform: version
+    name: esphome_garage_esphome_version
