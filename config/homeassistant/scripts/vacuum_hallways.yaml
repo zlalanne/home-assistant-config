@@ -4,7 +4,15 @@ vacuum_hallways:
   alias: "Vacuum Hallways"
   sequence:
     - service: script.vacuum_entryway
+    - wait_template: "{{ is_state('vaccum.xiaomi_vacuum_cleaner', 'cleaning') }}"
+    - wait_template: "{{ is_state('vaccum.xiaomi_vacuum_cleaner', 'returning') }}"
     - service: script.vacuum_front_hallway
+    - wait_template: "{{ is_state('vaccum.xiaomi_vacuum_cleaner', 'cleaning') }}"
+    - wait_template: "{{ is_state('vaccum.xiaomi_vacuum_cleaner', 'returning') }}"
     - service: script.vacuum_living_room_hallway
+    - wait_template: "{{ is_state('vaccum.xiaomi_vacuum_cleaner', 'cleaning') }}"
+    - wait_template: "{{ is_state('vaccum.xiaomi_vacuum_cleaner', 'returning') }}"
     - service: script.vacuum_kitchen_hallway
+    - wait_template: "{{ is_state('vaccum.xiaomi_vacuum_cleaner', 'cleaning') }}"
+    - wait_template: "{{ is_state('vaccum.xiaomi_vacuum_cleaner', 'returning') }}"
     - service: script.vacuum_back_hallway
