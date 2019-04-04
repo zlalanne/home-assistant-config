@@ -10,4 +10,4 @@ cloud:
       exclude_domains:
         - group
         - script
-
+        - vacuum
