@@ -6,7 +6,8 @@
 #
 zwave:
   usb_path: /dev/zwave
-  autoheal: True
+  # Autoheal is bad: https://github.com/home-assistant/architecture/issues/81#issuecomment-478444085
+  autoheal: False
   network_key: !secret zwave_network_key
   device_config_glob:
     "*_alarm_type":
