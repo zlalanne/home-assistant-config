@@ -5,6 +5,14 @@ vacuum_room:
   options:
     - Select Input
     - Office
-    - Living Room
     - Entryway
+    - Living Room
+    - Dining Room
+    - Guest Room
+    - Nursery
+    - Master Bedroom
+    - Master Bathroom
+    - Laundry Room
+    - Kitchen
+    - Hallways
   initial: Select Input
