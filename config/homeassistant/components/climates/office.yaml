@@ -2,7 +2,7 @@
 
 platform: generic_thermostat
 name: Office
-heater: switch.office_fan_speed_switch
+heater: input_boolean.turn_on_office_fan_automation
 target_temp: 74
 target_sensor: sensor.office_temperature
 cold_tolerance: 2

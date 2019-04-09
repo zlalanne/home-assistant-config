@@ -1,0 +1,24 @@
+---
+
+alias: Office Fan Turn On
+trigger:
+  - platform: state
+    entity_id: input_boolean.turn_on_office_fan_automation
+    to: 'on'
+  - platform: state
+    entity_id: sensor.office_temperature
+  - platform: state
+    entity_id: climate.office
+action:
+  - service: fan.turn_on
+    entity_id: fan.office_fan
+    data_template:
+        speed: >-
+          {% if ((state_attr('climate.office', 'temperature')|float) - (states.sensor.office_temperature|float)) >= 1.0 %}
+            low
+          {% elif ((state_attr('climate.office', 'temperature')|float) - (states.sensor.office_temperature|float)) <= -3.0 %}
+            high
+          {% else %}
+            medium
+          {% endif %}
+
