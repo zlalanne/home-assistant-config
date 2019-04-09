@@ -1,0 +1,8 @@
+---
+
+platform: generic_thermostat
+name: Office
+heater: fan.office_fan_switch_level
+max_temp: 78
+target_sensor: sensor.office_temperature
+ac_mode: True

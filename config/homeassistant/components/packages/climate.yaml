@@ -1,0 +1,7 @@
+---
+# The climate component is built for the controlling and monitoring of
+# HVAC (heating, ventilating, and air conditioning) and thermostat devices.
+#
+# https://www.home-assistant.io/components/climate/
+#
+climate: !include_dir_list ../climates
