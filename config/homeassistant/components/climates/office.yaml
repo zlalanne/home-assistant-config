@@ -2,7 +2,9 @@
 
 platform: generic_thermostat
 name: Office
-heater: fan.office_fan_switch_level
-max_temp: 78
+heater: switch.office_fan_speed_switch
+target_temp: 74
 target_sensor: sensor.office_temperature
+cold_tolerance: 2
+hot_tolerance: -2
 ac_mode: True
