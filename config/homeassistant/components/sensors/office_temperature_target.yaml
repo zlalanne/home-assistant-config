@@ -1,0 +1,10 @@
+---
+
+# Extract the set temperature from the generic thermostat from the office
+
+platform: template
+sensors:
+  office_temperature_target:
+    friendly_name: "Office Target Temperature"
+    unit_of_measurement: '°F'
+    value_template: "{{ state_attr('climate.office', 'temperature') }}"

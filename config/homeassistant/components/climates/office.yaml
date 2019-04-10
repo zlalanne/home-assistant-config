@@ -3,8 +3,9 @@
 platform: generic_thermostat
 name: Office
 heater: input_boolean.turn_on_office_fan_automation
-target_temp: 74
+target_temp: 78
 target_sensor: sensor.office_temperature
+initial_operation_mode: auto
 cold_tolerance: 2
 hot_tolerance: -2
 ac_mode: True

@@ -5,5 +5,6 @@ house_climate:
   entities:
     - sensor.garage_temperature
     - sensor.office_temperature
+    - sensor.office_temperature_target
     - sensor.garage_humidity
     - sensor.office_humidity

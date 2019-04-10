@@ -8,17 +8,25 @@ trigger:
   - platform: state
     entity_id: sensor.office_temperature
   - platform: state
-    entity_id: climate.office
+    entity_id: sensor.office_temperature_target
+condition:
+  - condition: state
+    entity_id: input_boolean.turn_on_office_fan_automation
+    state: 'on'
+  - condition: state
+    entity_id: timer.office_fan_cooldown
+    state: 'idle'
 action:
   - service: fan.turn_on
-    entity_id: fan.office_fan
+    entity_id: fan.office_fan_switch_level
     data_template:
         speed: >-
-          {% if ((state_attr('climate.office', 'temperature')|float) - (states.sensor.office_temperature|float)) >= 1.0 %}
+          {% if (((states('sensor.office_temperature_target') | float) - (states('sensor.office_temperature') | float))) >= 1.0 %}
             low
-          {% elif ((state_attr('climate.office', 'temperature')|float) - (states.sensor.office_temperature|float)) <= -3.0 %}
+          {% elif (((states('sensor.office_temperature_target') | float) - (states('sensor.office_temperature') | float))) <= -3.0 %}
             high
           {% else %}
             medium
           {% endif %}
-
+  - service: timer.start
+    entity_id: timer.office_fan_cooldown

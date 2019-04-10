@@ -1,0 +1,6 @@
+---
+# Timer used to control how often the speed of the office fan is updated
+
+office_fan_cooldown:
+  name: "Office Fan Cooldown"
+  duration: '00:05:00'
