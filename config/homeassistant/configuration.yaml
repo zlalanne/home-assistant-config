@@ -20,14 +20,3 @@ panel_custom:
 
 lovelace:
   mode: yaml
-
-person:
-  - name: Zack
-    id: zack
-    device_trackers:
-      - device_tracker.zack_phone
-  - name: Nicole
-    id: nicole
-    device_trackers:
-      - device_tracker.nicole_phone
-
