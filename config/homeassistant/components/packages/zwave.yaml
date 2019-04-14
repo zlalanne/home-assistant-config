@@ -6,8 +6,9 @@
 #
 zwave:
   usb_path: /dev/zwave
-  # Autoheal is bad: https://github.com/home-assistant/architecture/issues/81#issuecomment-478444085
-  autoheal: False
+  # Autoheal is bad:
+  # https://github.com/home-assistant/architecture/issues/81#issuecomment-478444085
+  autoheal: "False"
   network_key: !secret zwave_network_key
   device_config_glob:
     "*_alarm_type":
@@ -59,4 +60,3 @@ zwave:
     switch.zooz_zen20_v2_0_power_strip_switch_7:
       ignored: true
       polling_intensity: 0
-
