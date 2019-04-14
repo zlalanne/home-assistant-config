@@ -2,7 +2,7 @@
 
 platform: generic_thermostat
 name: Office
-heater: input_boolean.turn_on_office_fan_automation
+heater: switch.office_thermostat_switch
 target_temp: 78
 target_sensor: sensor.office_temperature
 initial_operation_mode: auto

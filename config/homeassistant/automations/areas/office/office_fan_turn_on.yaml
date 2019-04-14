@@ -1,18 +1,13 @@
 ---
 
 alias: Office Fan Turn On
+initial_state: false
 trigger:
-  - platform: state
-    entity_id: input_boolean.turn_on_office_fan_automation
-    to: 'on'
   - platform: state
     entity_id: sensor.office_temperature
   - platform: state
     entity_id: sensor.office_temperature_target
 condition:
-  - condition: state
-    entity_id: input_boolean.turn_on_office_fan_automation
-    state: 'on'
   - condition: state
     entity_id: timer.office_fan_cooldown
     state: 'idle'
