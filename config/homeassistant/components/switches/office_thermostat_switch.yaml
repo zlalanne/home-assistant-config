@@ -1,5 +1,7 @@
 ---
 
+# Switch used by office thermostat to turn on and off the fan
+
 platform: template
 switches:
   office_thermostat_switch:
