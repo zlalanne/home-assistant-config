@@ -1,3 +1,5 @@
 ---
+# The stream component provides a way to proxy live streams through Home
+# Assistant.
 
 stream:
