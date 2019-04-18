@@ -10,6 +10,7 @@ zwave:
   # https://github.com/home-assistant/architecture/issues/81#issuecomment-478444085
   autoheal: "False"
   network_key: !secret zwave_network_key
+  polling_interval: 60000
   device_config_glob:
     "*_alarm_type":
       ignored: true
@@ -39,6 +40,9 @@ zwave:
     switch.nursery_lights_courtyard_switch:
       ignored: false
       polling_intensity: 0
+    switch.shop_lights_switch:
+      ignored: false
+      polling_intensity: 1
     sensor.zooz_zen20_v2_0_power_strip_unknown:
       ignored: true
       polling_intensity: 0
