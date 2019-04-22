@@ -11,10 +11,14 @@ wifi:
     subnet: 255.255.255.0
     gateway: 192.168.1.1
 
-status_led:
-    pin: 16
-
 sensor:
+  - platform: ultrasonic
+    trigger_pin: 4
+    echo_pin: 5
+    name: "Office Desk Chair Distance"
+    update_interval: 100ms
+    filters:
+      - delta: 0.10
   - platform: dht
     pin: 14
     temperature:
@@ -23,6 +27,9 @@ sensor:
       name: "Office Humidity"
     model: DHT22
     update_interval: 60s
+
+status_led:
+    pin: 16
 
 # Enable logging
 logger:
