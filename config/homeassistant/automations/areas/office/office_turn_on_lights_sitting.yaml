@@ -1,0 +1,11 @@
+---
+
+alias: Office Turn On Lights Sitting
+trigger:
+  - platform: state
+    entity_id: sensor.office_desk_chair
+    to: Occupied
+action:
+  - service: light.turn_on
+    entity_id: light.office_lights
+

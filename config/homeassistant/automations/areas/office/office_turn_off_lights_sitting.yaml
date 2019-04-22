@@ -1,0 +1,13 @@
+---
+
+alias: Office Turn Off Lights Sitting
+trigger:
+  - platform: state
+    entity_id: sensor.office_desk_chair
+    to: Unoccupied
+    for:
+      minutes: 5
+action:
+  - service: light.turn_off
+    entity_id: light.office_lights
+

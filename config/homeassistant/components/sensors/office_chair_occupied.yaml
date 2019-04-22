@@ -1,0 +1,13 @@
+---
+# Sensor to determine if someone is in the office desk chair
+
+platform: template
+sensors:
+  office_desk_chair:
+    friendly_name: "Office Desk Chair"
+    value_template: >-
+      {% if (states('sensor.office_desk_chair_distance') | float ) < 0.65 %}
+          Occupied
+      {% else %}
+          Unoccupied
+      {% endif %}
