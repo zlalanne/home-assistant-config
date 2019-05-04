@@ -2,9 +2,9 @@
 # The Google Text-to-Speech platform use Google Text-to-Speech engine to
 # read a text with a natural sounding voice(s).
 #
-# https://www.home-assistant.io/components/tts.google/
+# https://www.home-assistant.io/components/google_translate/
 #
-platform: google
+platform: google_translate
 
 # Cache voice files to a local storage.
 cache: true
