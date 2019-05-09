@@ -1,0 +1,60 @@
+esphome:
+  name: sprinkler_system
+  platform: ESP8266
+  board: nodemcuv2
+  includes:
+    - shift_register_switch.h
+  libraries:
+    - ShiftRegister74HC595@1.2
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+  manual_ip:
+    static_ip: 192.168.1.72
+    subnet: 255.255.255.0
+    gateway: 192.168.1.1
+
+switch:
+  - platform: custom
+    lambda: |-
+      std::vector<switch_::Switch *> switches;
+      for(int i = 0; i < 8; i++) {
+          auto zone_switch = new ShiftRegisterSwitch(i);
+          App.register_component(zone_switch);
+          switches.push_back(zone_switch);
+      }
+      return switches;
+
+    switches:
+      -  name: "Sprinkler Zone 1"
+         inverted: yes
+      -  name: "Sprinkler Zone 2"
+         inverted: yes
+      -  name: "Sprinkler Zone 3"
+         inverted: yes
+      -  name: "Sprinkler Zone 4"
+         inverted: yes
+      -  name: "Sprinkler Zone 5"
+         inverted: yes
+      -  name: "Sprinkler Zone 6"
+         inverted: yes
+      -  name: "Sprinkler Zone 7"
+         inverted: yes
+      -  name: "Sprinkler Zone 8"
+         inverted: yes
+
+status_led:
+    pin: 16
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+
+ota:
+
+text_sensor:
+  - platform: version
+    name: esphome_sprinkler_system_esphome_version
