@@ -5,9 +5,12 @@ api_key: !secret dark_sky_api_key
 monitored_conditions:
   - precip_intensity
   - precip_intensity_max
+  - precip_accumulation
+  - precip_probability
   - temperature
   - wind_speed
   - cloud_cover
   - humidity
   - minutely_summary
+  - daily_summary
   - uv_index

@@ -1,0 +1,8 @@
+---
+
+sprinkler_water_yard:
+  alias: "Sprinkler Water Yard"
+  sequence:
+    - service: script.sprinkler_water_frontyard
+    - service: script.sprinkler_water_backyard
+    - service: script.sprinkler_water_sideyard

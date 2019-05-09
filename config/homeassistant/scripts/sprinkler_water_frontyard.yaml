@@ -1,0 +1,25 @@
+---
+
+sprinkler_water_frontyard:
+  alias: "Sprinkler Water Frontyard"
+  sequence:
+    - service: swtich.turn_off
+      entity_id: group.sprinklers
+    - delay: '00:01'
+    - service: switch.turn_on
+      entity_id: switch.sprinkler_zone_6
+    - delay: '00:40'
+    - service: switch.turn_off
+      entity_id: switch.sprinkler_zone_6
+    - delay: '00:01'
+    - service: switch.turn_on
+      entity_id: switch.sprinkler_zone_7
+    - delay: '00:40'
+    - service: switch.turn_off
+      entity_id: switch.sprinkler_zone_7
+    - delay: '00:01'
+    - service: switch.turn_on
+      entity_id: switch.sprinkler_zone_8
+    - delay: '00:40'
+    - service: switch.turn_off
+      entity_id: switch.sprinkler_zone_8
