@@ -1,0 +1,7 @@
+---
+
+certs:
+  name: SSL Certificates
+  entities:
+    - sensor.blog_ssl_certificate_expiry
+    - sensor.personal_ssl_certificate_expiry
