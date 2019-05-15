@@ -10,5 +10,8 @@ condition:
     weekday:
       - thu
       - sun
+  - condition: numeric_state
+    entity_id: "sensor.dark_sky_precip_probability_0d"
+    below: 60
 action:
   - service: script.sprinkler_water_backyard

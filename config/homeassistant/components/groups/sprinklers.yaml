@@ -2,6 +2,7 @@
 
 sprinklers:
   name: Sprinkler System
+  control: hidden
   entities:
     - switch.sprinkler_zone_1
     - switch.sprinkler_zone_2

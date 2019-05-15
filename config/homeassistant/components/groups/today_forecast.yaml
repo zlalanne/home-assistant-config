@@ -1,0 +1,13 @@
+---
+
+today_forecast:
+  name: Today's Forecast
+  entities:
+    - sensor.dark_sky_cloud_coverage_0d
+    - sensor.dark_sky_humidity_0d
+    - sensor.dark_sky_precip_intensity_0d
+    - sensor.dark_sky_daily_max_precip_intensity_0d
+    - sensor.dark_sky_precip_accumulation_0d
+    - sensor.dark_sky_precip_probability_0d
+    - sensor.dark_sky_uv_index_0d
+    - sensor.dark_sky_wind_speed_0d

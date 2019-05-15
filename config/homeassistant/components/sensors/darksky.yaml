@@ -2,10 +2,11 @@
 
 platform: darksky
 api_key: !secret dark_sky_api_key
+forecast:
+  - 0
 monitored_conditions:
   - precip_intensity
   - precip_intensity_max
-  - precip_accumulation
   - precip_probability
   - temperature
   - wind_speed
