@@ -1,0 +1,7 @@
+---
+
+desk_chair:
+  name: Desk Chair
+  entities:
+    - sensor.office_desk_chair_distance
+    - sensor.office_desk_chair
