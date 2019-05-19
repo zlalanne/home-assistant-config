@@ -1,0 +1,8 @@
+---
+
+name: Night Outdoor Lights
+entities:
+  light.driveway_lantern_light:
+    state: on
+    transition: 5
+    brightness: 50

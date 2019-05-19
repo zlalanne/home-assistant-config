@@ -1,0 +1,10 @@
+---
+
+alias: Turn On Outdoor Lighting
+trigger:
+  - platform: sun
+    event: sunset
+    offset: "+01:00:00"
+action:
+  - service: scene.turn_on
+    entity_id: scene.night_outdoor_lights

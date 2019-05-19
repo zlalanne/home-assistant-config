@@ -1,0 +1,7 @@
+---
+
+name: Day Outdoor Lights
+entities:
+  light.driveway_lantern_light:
+    state: off
+    transition: 5
