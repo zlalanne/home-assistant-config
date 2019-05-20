@@ -1,0 +1,14 @@
+<Product Revision="2" xmlns="https://github.com/OpenZWave/open-zwave">
+  <!-- Association Groups -->
+  <CommandClass id="133">
+    <Associations num_groups="1">
+      <Group index="1" label="Lifeline" max_associations="1"/>
+    </Associations>
+  </CommandClass>
+  <!-- This thermostat's setpoint descriptions are 0 based, not 1 -->
+  <CommandClass id="67">
+    <Compatibility>
+      <Base>0</Base>
+    </Compatibility>
+  </CommandClass>
+</Product>

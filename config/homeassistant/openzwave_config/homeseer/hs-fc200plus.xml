@@ -1,0 +1,106 @@
+<Product Revision="2" xmlns="https://github.com/OpenZWave/open-zwave">
+  <!--
+    HomeSeer HS-FC200+ Z-Wave Plus RGB Smart Fan Speed Controller Switch
+    https://products.z-wavealliance.org/products/2957
+    https://homeseer.com/wp-content/uploads/2018/09/HS-FC200-Manual-Online-072318.pdf
+    -->
+
+    <!-- Configuration Parameters -->
+  <CommandClass id="112">
+    <Value genre="config" index="3" label="Bottom LED operation" max="1" min="0" size="1" type="list" value="1">
+      <Help>Sets bottom LED operation (in normal mode)</Help>
+      <Item label="Bottom LED on if load is off" value="0"/>
+      <Item label="Bottom LED off if load is off" value="1"/>
+    </Value>
+    <Value genre="config" index="4" label="Paddle load orientation" max="1" min="0" size="1" type="list" value="0">
+      <Help>Sets paddle's load orientation</Help>
+      <Item label="Top of paddle turns load ON" value="0"/>
+      <Item label="Bottom of paddle turns load ON" value="1"/>
+    </Value>
+    <Value genre="config" index="5" label="Fan type" max="1" min="0" size="1" type="list" value="0">
+      <Help>Sets fan type</Help>
+      <Item label="3-speed" value="0"/>
+      <Item label="4-speed" value="1"/>
+    </Value>
+    <Value genre="config" index="13" label="LED indicator mode" max="1" min="0" size="1" type="list" value="0">
+      <Help>Sets LED indicator mode of operation</Help>
+      <Item label="Normal mode (load status)" value="0"/>
+      <Item label="Status mode (custom status)" value="1"/>
+    </Value>
+    <Value genre="config" index="14" label="Normal mode LED color" max="6" min="0" size="1" type="list" value="0">
+      <Help>Sets the Normal mode LED color</Help>
+      <Item label="White" value="0"/>
+      <Item label="Red" value="1"/>
+      <Item label="Green" value="2"/>
+      <Item label="Blue" value="3"/>
+      <Item label="Magenta" value="4"/>
+      <Item label="Yellow" value="5"/>
+      <Item label="Cyan" value="6"/>
+    </Value>
+    <Value genre="config" index="21" label="Status mode LED 1 (bottom) color" max="7" min="0" size="1" type="list" value="0">
+      <Help>Sets the Status mode LED 1 (bottom) color</Help>
+      <Item label="Off" value="0"/>
+      <Item label="Red" value="1"/>
+      <Item label="Green" value="2"/>
+      <Item label="Blue" value="3"/>
+      <Item label="Magenta" value="4"/>
+      <Item label="Yellow" value="5"/>
+      <Item label="Cyan" value="6"/>
+      <Item label="White" value="7"/>
+    </Value>
+    <Value genre="config" index="22" label="Status mode LED 2 color" max="7" min="0" size="1" type="list" value="0">
+      <Help>Sets the Status mode LED 2 color</Help>
+      <Item label="Off" value="0"/>
+      <Item label="Red" value="1"/>
+      <Item label="Green" value="2"/>
+      <Item label="Blue" value="3"/>
+      <Item label="Magenta" value="4"/>
+      <Item label="Yellow" value="5"/>
+      <Item label="Cyan" value="6"/>
+      <Item label="White" value="7"/>
+    </Value>
+    <Value genre="config" index="23" label="Status mode LED 3 color" max="7" min="0" size="1" type="list" value="0">
+      <Help>Sets the Status mode LED 3 color</Help>
+      <Item label="Off" value="0"/>
+      <Item label="Red" value="1"/>
+      <Item label="Green" value="2"/>
+      <Item label="Blue" value="3"/>
+      <Item label="Magenta" value="4"/>
+      <Item label="Yellow" value="5"/>
+      <Item label="Cyan" value="6"/>
+      <Item label="White" value="7"/>
+    </Value>
+    <Value genre="config" index="24" label="Status mode LED 4 color" max="7" min="0" size="1" type="list" value="0">
+      <Help>Sets the Status mode LED 4 color</Help>
+      <Item label="Off" value="0"/>
+      <Item label="Red" value="1"/>
+      <Item label="Green" value="2"/>
+      <Item label="Blue" value="3"/>
+      <Item label="Magenta" value="4"/>
+      <Item label="Yellow" value="5"/>
+      <Item label="Cyan" value="6"/>
+      <Item label="White" value="7"/>
+    </Value>
+    <Value genre="config" index="30" label="Blink frequency for all LEDs in Status mode" max="255" min="0" type="byte" value="0">
+      <Help>Sets the blink frequency for all LEDs in Status mode. Possible values: 0, 1-255
+              0 = No blink
+              1 = 100ms ON then 100ms OFF
+            </Help>
+    </Value>
+    <Value genre="config" index="31" label="LEDs to blink in status mode" max="15" min="0" type="byte" value="0">
+      <Help>Sets LEDs 1-4 to blink in Status mode. Bitmask defines specific LEDs to enable for blinking. Note: this decimal value is derived from a hex code calculation based on the following: 
+              Bit 0 = LED 1
+              Bit 1 = LED 2
+              Bit 2 = LED 3
+              Bit 3 = LED 4
+              IE: value of 1 = first LED, 8 = LED 4
+            </Help>
+    </Value>
+  </CommandClass>
+  <!-- Association Groups -->
+  <CommandClass id="133">
+    <Associations num_groups="1">
+      <Group index="1" label="Lifeline" max_associations="5"/>
+    </Associations>
+  </CommandClass>
+</Product>

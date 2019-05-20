@@ -1,0 +1,21 @@
+<Product Revision="2" xmlns="https://github.com/OpenZWave/open-zwave">
+  <!--
+Vision ZD2105US-5 Recessed Door/Window Sensor
+https://products.z-wavealliance.org/ProductManual/File?folder=&filename=Manuals/1727/ZD%202105-5_V1-20160329.pdf
+-->
+
+    <!-- COMMAND_CLASS_BASIC -->
+  <CommandClass id="32">
+    <Compatibility>
+      <SetAsReport>true</SetAsReport>
+    </Compatibility>
+  </CommandClass>
+  <!-- COMMAND_CLASS_SENSOR_BINARY. This class is in the list reported by the device, but it does not respond to requests -->
+  <CommandClass action="remove" id="48"/>
+  <!-- COMMAND_CLASS_ASSOCIATION -->
+  <CommandClass id="133">
+    <Associations num_groups="1">
+      <Group index="1" label="Lifeline" max_associations="5"/>
+    </Associations>
+  </CommandClass>
+</Product>

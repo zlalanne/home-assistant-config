@@ -1,0 +1,51 @@
+<Product Revision="3" xmlns="https://github.com/OpenZWave/open-zwave">
+  <!-- Vision ZD2201 Multisensor 4in1 -->
+  <CommandClass id="112">
+    <Value genre="config" index="1" label="Temperature unity" max="1" min="0" size="1" type="list" value="0">
+      <Help></Help>
+      <Item label="Celsius" value="0"/>
+      <Item label="Fahrenheit" value="1"/>
+    </Value>
+    <Value genre="config" index="2" instance="1" label="Temperature Reporting Threshold" max="50" min="1" type="byte" value="1">
+      <Help>Threshold change in temperature to induce an automatic report.
+            1 to 50 ( Set up from 0.1C to 5C)
+            </Help>
+    </Value>
+    <Value genre="config" index="3" instance="1" label="Humidity Reporting Threshold" max="50" min="1" type="byte" units="%" value="10">
+      <Help>Threshold change in humidity to induce an automatic report.
+            1 to 50 ( Set up from 1%-50%)
+            </Help>
+    </Value>
+    <Value genre="config" index="4" instance="1" label="Luminance Reporting Threshold" max="50" min="0" type="byte" units="%" value="10">
+      <Help>
+                Threshold change in luminance to induce an automatic report.
+                0 is disabled.
+                5 to 50 ( Set up from 5%-50%)
+            </Help>
+    </Value>
+  </CommandClass>
+  <!-- COMMAND_CLASS_BASIC -->
+  <CommandClass id="32">
+    <Compatibility>
+      <SetAsReport>true</SetAsReport>
+    </Compatibility>
+  </CommandClass>
+  <!-- COMMAND_CLASS_ALARM AlarmCmd_Get responds with an undocumented value -->
+  <CommandClass id="113">
+    <Compatibility>
+      <GetSupported>false</GetSupported>
+    </Compatibility>
+  </CommandClass>
+  <!-- COMMAND_CLASS_SENSOR_BINARY Get responds with an undocumented value -->
+  <CommandClass id="30">
+    <Compatibility>
+      <GetSupported>false</GetSupported>
+    </Compatibility>
+  </CommandClass>
+  <!-- COMMAND_CLASS_ASSOCIATION -->
+  <CommandClass id="133">
+    <Associations num_groups="1">
+      <Group index="1" label="Lifeline" max_associations="5"/>
+    </Associations>
+  </CommandClass>
+</Product>
