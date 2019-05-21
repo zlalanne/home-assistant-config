@@ -1,0 +1,7 @@
+---
+
+platform: template
+sensors:
+  driveway_motion_sensor_battery_low:
+    friendly_name: "Driveway Motion Sensor Low Battery"
+    value_template: "{{ states.sensor.driveway_motion_sensor_battery < 15 }}"

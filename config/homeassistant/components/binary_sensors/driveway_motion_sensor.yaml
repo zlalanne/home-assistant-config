@@ -1,0 +1,8 @@
+---
+
+platform: template
+sensors:
+  driveway_motion_sensor:
+    friendly_name: "Driveway Motion Sensor"
+    device_class: motion
+    value_template: "{{ is_state('sensor.driveway_motion_sensor_burglar', '8') }}"

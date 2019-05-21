@@ -1,0 +1,9 @@
+---
+
+platform: template
+sensors:
+  driveway_motion_sensor_battery:
+    friendly_name: Driveway Motion Sensor Battery Level
+    unit_of_measurement: '%'
+    value_template: "{{ state_attr('zwave.zooz_zse29_outdoor_motion_sensor', 'battery_level') }}"
+    device_class: battery

@@ -37,6 +37,9 @@ zwave:
     "sensor.zooz_zen20_v2_0_power_strip_previous_reading_*":
       ignored: true
       polling_intensity: 0
+    "sensor.*sourcenodeid":
+      ignored: true
+      polling_intensity: 0
   device_config:
     switch.nursery_lights_courtyard_switch:
       ignored: false
@@ -59,12 +62,15 @@ zwave:
     sensor.zooz_zen20_v2_0_power_strip_previous_reading:
       ignored: true
       polling_intensity: 0
-    sensor.zooz_zen20_v2_0_power_strip_sourcenodeid:
-      ignored: true
-      polling_intensity: 0
     switch.zooz_zen20_v2_0_power_strip_switch_6:
       ignored: true
       polling_intensity: 0
     switch.zooz_zen20_v2_0_power_strip_switch_7:
+      ignored: true
+      polling_intensity: 0
+    sensor.zooz_zse29_outdoor_motion_sensor_power_management:
+      ignored: true
+      polling_intensity: 0
+    binary_sensor.zooz_zse29_outdoor_motion_sensor_sensor:
       ignored: true
       polling_intensity: 0
