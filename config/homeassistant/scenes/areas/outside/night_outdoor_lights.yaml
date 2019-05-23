@@ -1,7 +1,14 @@
 ---
 
-name: Day Outdoor Lights
+name: Night Outdoor Lights
 entities:
   light.driveway_lantern_light:
-    state: off
+    state: on
     transition: 5
+    brightness_pct: 25
+  automation.reset_outdoor_lights_night:
+    state: on
+  automation.motion_stopped_outdoors:
+    state: on
+  automation.motion_detected_outdoors:
+    state: on

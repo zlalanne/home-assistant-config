@@ -1,0 +1,13 @@
+---
+
+alias: Reset Outdoor Lights Night
+initial_state: False
+trigger:
+  - platform: event
+    event_type: timer.finished
+    event_data:
+      entity_id: timer.reset_outdoor_lights
+action:
+  - service: scene.turn_on
+    entity_id: scene.night_outdoor_lights
+

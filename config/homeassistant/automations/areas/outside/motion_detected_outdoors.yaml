@@ -1,0 +1,13 @@
+---
+
+alias: Motion Detected Outdoors
+initial_state: False
+trigger:
+  - platform: state
+    entity_id: binary_sensor.driveway_motion_sensor
+    to: 'on'
+action:
+  - service: scene.turn_on
+    entity_id: scene.night_outdoor_lights_motion_detected
+  - service: timer.cancel
+    entity_id: timer.reset_outdoor_lights

@@ -1,0 +1,11 @@
+---
+
+alias: Motion Stopped Outdoors
+initial_state: False
+trigger:
+  - platform: state
+    entity_id: binary_sensor.driveway_motion_sensor
+    to: 'off'
+action:
+  - service: timer.start
+    entity_id: timer.reset_outdoor_lights

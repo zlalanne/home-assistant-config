@@ -4,4 +4,9 @@ platform: template
 sensors:
   driveway_motion_sensor_battery_low:
     friendly_name: "Driveway Motion Sensor Low Battery"
-    value_template: "{{ states.sensor.driveway_motion_sensor_battery < 15 }}"
+    value_template: >-
+      {% if states('sensor.driveway_motion_sensor_battery') != "unknown" %}
+          {{ states('sensor.driveway_motion_sensor_battery') | float < 15 }}
+      {% else %}
+          False
+      {% endif %}

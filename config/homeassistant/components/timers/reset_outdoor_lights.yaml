@@ -1,0 +1,6 @@
+---
+# Timer used to reset the outdoor lights after motion has stopped
+
+reset_outdoor_lights:
+  name: "Reset Outdoor Lights"
+  duration: "00:05:00"

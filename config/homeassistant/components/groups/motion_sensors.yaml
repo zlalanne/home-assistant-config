@@ -7,3 +7,4 @@ motion_sensors:
     - sensor.driveway_motion_sensor_burglar
     - sensor.driveway_motion_sensor_battery
     - binary_sensor.driveway_motion_sensor_battery_low
+    - alert.driveway_motion_sensor_battery_low

@@ -1,0 +1,8 @@
+---
+
+driveway_motion_sensor_battery_low:
+  name: Driveway Motion Sensor Low Battery
+  entity_id: binary_sensor.driveway_motion_sensor_battery_low
+  repeat: 30
+  notifiers:
+    - zack_telegram
