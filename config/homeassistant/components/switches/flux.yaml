@@ -1,0 +1,7 @@
+---
+
+
+platform: flux
+lights:
+  - light.kitchen_leds_left
+  - light.kitchen_leds_right

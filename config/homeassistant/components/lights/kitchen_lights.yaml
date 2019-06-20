@@ -1,0 +1,8 @@
+---
+# Combine the two sets of string lights into a group
+
+platform: group
+name: Kitchen Lights
+entities:
+  - light.kitchen_leds_left
+  - light.kitchen_leds_right
