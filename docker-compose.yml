@@ -2,7 +2,7 @@ version: "3"
 
 services:
   homeassistant:
-    image: homeassistant/home-assistant:0.93.2
+    image: homeassistant/home-assistant:0.95.0
     user: 1000:1000
     volumes:
       - ./config/homeassistant/:/config
@@ -15,7 +15,7 @@ services:
       - influxdb
       - mosquitto
   postgres:
-    image: postgres:11.2
+    image: postgres:11.4
     user: 1000:1000
     ports:
       - "5432:5432"
@@ -44,7 +44,7 @@ services:
     depends_on:
       - homeassistant
   influxdb:
-    image: influxdb:1.7.1
+    image: influxdb:1.7.6
     user: 1000:1000
     volumes:
       - ./config/influxdb:/var/lib/influxdb
@@ -53,7 +53,7 @@ services:
     environment:
       - "INFLUXDB_DB=home_assistant"
   grafana:
-    image: grafana/grafana:5.3.4
+    image: grafana/grafana:6.2.5
     user: 1000:1000
     volumes:
       - ./config/grafana:/var/lib/grafana
@@ -62,7 +62,7 @@ services:
     depends_on:
       - influxdb
   mosquitto:
-    image: eclipse-mosquitto:1.5.4
+    image: eclipse-mosquitto:1.6.3
     user: 1000:1000
     volumes:
       - ./config/mosquitto/data:/mosquitto/data
@@ -81,7 +81,7 @@ services:
     ports:
       - "8090:8090"
   portainer:
-    image: portainer/portainer:1.20.2
+    image: portainer/portainer:1.21.0
     user: 1000:999
     volumes:
       - ./config/portainer:/data
