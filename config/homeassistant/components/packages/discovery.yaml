@@ -1,3 +1,8 @@
 ---
 
 discovery:
+  ignore:
+    - google_cast
+    - igd
+    - panasonic_viera
+    - plex_mediaserver
