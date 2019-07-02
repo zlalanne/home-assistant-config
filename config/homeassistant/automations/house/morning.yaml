@@ -1,0 +1,18 @@
+---
+
+alias: Morning
+trigger:
+  - platform: time
+    at: '04:30:00'
+condition:
+  - condition: time
+    weekday:
+      - sun
+      - mon
+      - wed
+      - thu
+      - sat
+action:
+  - service: scene.turn_on
+    entity_id: scene.morning
+  - service: switch.flux_update

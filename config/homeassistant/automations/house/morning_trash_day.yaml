@@ -1,0 +1,14 @@
+---
+
+alias: Morning Trash Day
+trigger:
+  - platform: time
+    at: '04:30:00'
+condition:
+  - condition: time
+    weekday:
+      - tue
+      - fri
+action:
+  - service: scene.turn_on
+    entity_id: scene.morning_trash_day

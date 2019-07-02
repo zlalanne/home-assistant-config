@@ -1,0 +1,10 @@
+---
+
+alias: Mid Morning
+trigger:
+  - platform: time
+    at: '09:00:00'
+action:
+  - service: scene.turn_on
+    entity_id: scene.morning
+  - service: switch.flux_update

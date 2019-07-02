@@ -1,0 +1,13 @@
+---
+
+name: Morning Trash Day
+entities:
+  light.kitchen_lights:
+    state: on
+    white_value: 0
+    color_name: blue
+  light.living_room_light:
+    state: on
+    brightness_pct: 20
+  switch.flux:
+    state: off
