@@ -5,7 +5,7 @@ entities:
   light.driveway_lantern_light:
     state: on
     transition: 5
-    brightness_pct: 30
+    brightness_pct: 25
   automation.reset_outdoor_lights_night:
     state: on
   automation.motion_stopped_outdoors:
