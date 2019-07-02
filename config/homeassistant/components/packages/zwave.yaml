@@ -40,6 +40,9 @@ zwave:
     "sensor.*sourcenodeid":
       ignored: true
       polling_intensity: 0
+    "sensor.zooz_zen25_s2_double_plug_with_usb_port_*":
+      ignored: true
+      polling_intensity: 0
   device_config:
     switch.nursery_lights_courtyard_switch:
       ignored: false
