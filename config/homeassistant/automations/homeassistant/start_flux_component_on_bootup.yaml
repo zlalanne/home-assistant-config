@@ -1,0 +1,13 @@
+---
+# Start the flux component on start of Home Assistant so that lights
+# automatically get their colors set
+
+alias: Start flux component on bootup
+initial_state: "on"
+trigger:
+  - platform: homeassistant
+    event: start
+action:
+  - service: switch.turn_on
+    entity_id: switch.flux 
+  - service: switch.flux_update
