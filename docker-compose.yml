@@ -89,3 +89,20 @@ services:
     network_mode: "host"
     ports:
       - "9000:9000"
+  esphome:
+    image: esphome/esphome
+    user: 1000:1000
+    volumes:
+      - ./config/homeassistant/esphome:/config
+    ports:
+      - "6052:6052"
+  zwave2mqtt:
+    image: robertslando/zwave2mqtt:latest
+    user: 1000:1000
+    devices:
+      - "/dev/serial/by-id/usb-0658_0200-if00:/dev/zwave:rmw"
+    volumes:
+      - ./config/zwave2mqtt/store:/usr/src/app/store
+      - ./config/homeassistant/openzwave_config:/openzwave_config
+    ports:
+      - "8091:8091"
