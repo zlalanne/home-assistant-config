@@ -1,0 +1,65 @@
+---
+
+esphome:
+  name: shh_machine
+  platform: ESP8266
+  board: nodemcuv2
+  includes:
+    - mp3_player.h
+  libraries:
+    - DFRobotDFPlayerMini@1.0.5
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+  manual_ip:
+    static_ip: 192.168.1.73
+    subnet: 255.255.255.0
+    gateway: 192.168.1.1
+
+status_led:
+    pin: 16
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+
+ota:
+
+output:
+  - platform: custom
+    type: binary
+    lambda: |-
+      auto mp3player_output = new MP3PlayerOutput();
+      App.register_component(mp3player_output);
+      return {mp3player_output};
+    outputs:
+      id: mp3_player
+
+# Switch to control sound playing
+switch:
+  - platform: output
+    id: shh_machine
+    name: Shh Machine
+    output: "mp3_player"
+
+# Physical button for local override
+binary_sensor:
+  - platform: gpio
+    name: Button
+    internal: True
+    pin:
+      number: 5
+      mode: INPUT_PULLUP
+    filters:
+      - delayed_on: 10ms
+      - delayed_off: 10ms
+    on_release:
+      then:
+        switch.toggle: shh_machine
+
+text_sensor:
+  - platform: version
+    name: esphome_shh_machine_esphome_version
