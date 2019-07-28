@@ -2,7 +2,7 @@ version: "3"
 
 services:
   homeassistant:
-    image: homeassistant/home-assistant:0.95.0
+    image: homeassistant/home-assistant:0.96.5
     user: 1000:1000
     volumes:
       - ./config/homeassistant/:/config

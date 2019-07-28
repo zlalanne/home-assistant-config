@@ -1,4 +1,5 @@
 ---
+# Use RTSP to connect to a camera
 
 platform: generic
 still_image_url: !secret nursery_camera_still_image

@@ -5,7 +5,7 @@ name: Office
 heater: switch.office_thermostat_switch
 target_temp: 78
 target_sensor: sensor.office_temperature
-initial_operation_mode: auto
+initial_hvac_mode: "off"
 cold_tolerance: 2
 hot_tolerance: -2
 ac_mode: True
