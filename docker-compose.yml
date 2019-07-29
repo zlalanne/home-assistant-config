@@ -94,8 +94,7 @@ services:
     user: 1000:1000
     volumes:
       - ./config/homeassistant/esphome:/config
-    ports:
-      - "6052:6052"
+    network_mode: "host"
   zwave2mqtt:
     image: robertslando/zwave2mqtt:latest
     user: 1000:1000
