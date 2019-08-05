@@ -6,6 +6,7 @@ entities:
     state: on
     white_value: 0
     color_name: blue
+    brightness_pct: 60
   light.living_room_light:
     state: on
     brightness_pct: 20
