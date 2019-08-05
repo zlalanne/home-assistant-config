@@ -1,0 +1,10 @@
+---
+# Control the Living Room TV over MQTT using the cec-mqtt-bridge
+
+platform: mqtt
+name: "Living Room TV"
+command_topic: "livingroom/tv/cec/0/cmd"
+payload_on: "on"
+payload_off: "off"
+state_topic: "livingroom/tv/cec/0"
+availability_topic: "livingroom/tv/bridge/status"
