@@ -1,0 +1,23 @@
+---
+
+path: inside
+title: Inside
+icon: mdi:sofa
+cards:
+  - type: vertical-stack
+    cards:
+      - type: entities
+        title: Lights
+        show_header_toggle: false
+        entities:
+          - light.office_lights
+          - light.living_room_light
+          - light.kitchen_lights
+          - light.nursery_string_lights
+      - type: entities
+        title: Fans
+        show_header_toggle: false
+        entities:
+          - fan.office_fan_switch_level
+  - type: thermostat
+    entity: climate.office

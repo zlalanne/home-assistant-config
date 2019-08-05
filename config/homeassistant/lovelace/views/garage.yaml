@@ -1,0 +1,10 @@
+---
+
+path: garage
+title: Garage
+icon: mdi:wrench
+cards:
+  - type: entities
+    entities:
+      - light.shop_lights
+      - cover.garage_door

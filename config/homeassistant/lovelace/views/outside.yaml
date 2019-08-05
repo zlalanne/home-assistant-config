@@ -1,0 +1,18 @@
+---
+
+path: outside
+title: Outside
+icon: mdi:pine-tree
+cards:
+  - type: entities
+    title: Sprinkler Zones
+    show_header_toggle: false
+    entities:
+      - switch.sprinkler_zone_1
+      - switch.sprinkler_zone_2
+      - switch.sprinkler_zone_3
+      - switch.sprinkler_zone_4
+      - switch.sprinkler_zone_5
+      - switch.sprinkler_zone_6
+      - switch.sprinkler_zone_7
+      - switch.sprinkler_zone_8
