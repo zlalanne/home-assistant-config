@@ -1,0 +1,10 @@
+---
+# The google calendar platform allows you to connect to your Google Calendars
+# and generate binary sensors. The sensors created can trigger based on any
+# event on the calendar or only for matching events.
+#
+# https://www.home-assistant.io/components/calendar.google/
+
+google:
+  client_id: !secret google_client_id
+  client_secret: !secret google_client_secret

@@ -1,26 +1,27 @@
 # Generic ignores
-*.log
 *.db
 *.db-shm
 *.db-wal
+*.log
 *.pyc
 ._*
 __pycache__
 
 # Dirs to ignore
-.storage
 .cloud
 .google.token
+.storage
 deps
 
 # Files to ignore
-ip_bans.yaml
-secrets.yaml
-known_devices.yaml
-OZW_Log.txt
 .uuid
-pyozw.sqlite
+OZW_Log.txt
+google_calendars.yaml
+ip_bans.yaml
+known_devices.yaml
 options.xml
+pyozw.sqlite
+secrets.yaml
 zwcfg_*
 zwscene.xml
 
