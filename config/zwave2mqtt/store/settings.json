@@ -1,0 +1,1 @@
+{"mqtt":{"name":"Mosquitto","host":"mqtt://192.168.1.2","port":1883,"reconnectPeriod":1000,"prefix":"zwave2mqtt","qos":2,"retain":true},"gateway":{"values":[],"type":0,"payloadType":2},"zwave":{"port":"/dev/zwave","pollInterval":1000,"configPath":"/openzwave_config"}}
