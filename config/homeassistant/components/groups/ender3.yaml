@@ -1,0 +1,15 @@
+---
+
+ender3:
+  name: Ender 3
+  entities:
+    - binary_sensor.ender_3_printing
+    - binary_sensor.ender_3_printing_error
+    - sensor.ender_3_actual_bed_temp
+    - sensor.ender_3_actual_tool0_temp
+    - sensor.ender_3_current_state
+    - sensor.ender_3_job_percentage
+    - sensor.ender_3_target_bed_temp
+    - sensor.ender_3_target_tool0_temp
+    - sensor.ender_3_time_elapsed
+    - sensor.ender_3_time_remaining
