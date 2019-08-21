@@ -1,0 +1,13 @@
+---
+
+alias: IFTTT Switch TV to Nursery
+trigger:
+  - platform: event
+    event_type: ifttt_webhook_received
+    event_data:
+      action: call_service
+condition:
+  condition: template
+  value_template: "{{ trigger.event.data.service == 'script.switch_tv_to_nursery' }}"
+action:
+  service_template: "{{ trigger.event.data.service }}"

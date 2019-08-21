@@ -1,0 +1,13 @@
+---
+# Turn on the TV and switch it to the nursery
+
+switch_tv_to_nursery:
+  alias: "Switch TV to Nursery"
+  sequence:
+    - service: switch.turn_on
+      entity_id: switch.living_room_tv
+    - delay: "00:00:15"
+    - service: mqtt.publish
+      data:
+        topic: "livingroom/tv/cec/tx"
+        payload: "4f:82:40:00"
