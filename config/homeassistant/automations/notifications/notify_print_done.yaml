@@ -1,0 +1,17 @@
+---
+
+alias: Send a notice when 3D print is done
+trigger:
+  - platform: state
+    entity_id: binary_sensor.ender_3_printing
+    to: "off"
+    from: "on"
+condition:
+  - condition: time
+    before: "23:00:00"
+    after: "5:00:00"
+action:
+  - service: notify.zack_telegram
+    data:
+      message: "Your 3D print is complete"
+      title: "Print Complete"

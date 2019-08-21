@@ -1,0 +1,10 @@
+---
+# Adds an iframe panel to the Home Assistant frontend for Octoprint.
+# This allows me to access ESPHome straight from Home Asssitant's UI
+#
+# https://www.home-assistant.io/components/panel_iframe/
+#
+octoprint:
+  title: OctoPrint
+  icon: mdi:printer-3d
+  url: !secret panel_iframe_octoprint_url
