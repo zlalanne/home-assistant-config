@@ -1,7 +1,0 @@
----
-# Connect to Ubiquiti Video for cameras
-
-platform: uvc
-nvr: 192.168.1.2
-key: !secret unifi_video_api_key
-password: !secret unifi_video_camera_password

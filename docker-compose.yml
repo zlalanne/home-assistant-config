@@ -72,14 +72,14 @@ services:
       - "1883:1883"
       - "9001:9001"
   openzwave:
-    image: ruimarinho/openzwave
+    image: openzwave/openzwave-control-panel
     devices:
-      - "/dev/ttyACM0"
+      - "/dev/ttyACM0:/dev/ttyACM0:rmw"
     volumes:
-      - $PWD/configuration/options.xml:/root/open-zwave-control-panel/config/options.xml
-      - $PWD/configuration/zwcfg_0xc411c974.xml:/root/open-zwave-control-panel/zwcfg_0xc411c974.xml
+      - ./config/homeassistant/options.xml:/config/options.xml
+      - ./config/zwcfg_0xe4665338.xml:/config/zwcfg_0xe4665338.xml
     ports:
-      - "8090:8090"
+      - "8008:8008"
   portainer:
     image: portainer/portainer:1.21.0
     user: 1000:999

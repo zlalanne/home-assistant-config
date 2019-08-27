@@ -1,0 +1,9 @@
+---
+
+path: cameras
+title: Cameras
+icon: mdi:cctv
+cards:
+  - type: entities
+    entities:
+      - camera.nursery

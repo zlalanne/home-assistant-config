@@ -1,0 +1,30 @@
+---
+
+alias: Doorbell
+trigger:
+  - platform: event
+    event_type: zwave.node_event
+    event_data:
+      entity_id: zwave.aeotec_limited_zw162_doorbell_6
+      basic_level: 0
+action:
+  - service: camera.record
+    data:
+      entity_id: camera.nursery
+      filename: "/tmp/doorbell.mp4"
+      duration: 5
+      lookback: 5
+  - service: notify.zack_telegram
+    data:
+      title: "Doorbell Rang"
+      message: !secret external_lovelace_cameras
+  - delay:
+      seconds: 8
+  - service: notify.zack_telegram
+    data:
+      title: "Doorbell"
+      message: "Doorbell Rang"
+      data:
+        video:
+          - file: "/tmp/doorbell.mp4"
+            caption: "Doorbell Rang"

@@ -14,3 +14,4 @@ views:
   - !include lovelace/views/inside.yaml
   - !include lovelace/views/garage.yaml
   - !include lovelace/views/outside.yaml
+  - !include lovelace/views/cameras.yaml
