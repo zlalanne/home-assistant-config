@@ -4,4 +4,3 @@ name: Zack
 id: zack
 device_trackers:
   - device_tracker.zack_phone
-

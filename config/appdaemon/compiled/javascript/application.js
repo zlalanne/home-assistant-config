@@ -2,25 +2,25 @@ function basedisplay(widget_id, url, skin, parameters)
 {
     // Will be using "self" throughout for the various flavors of "this"
     // so for consistency ...
-    
+
     self = this;
-    
+
     // Initialization
-    
+
     self.widget_id = widget_id;
-    
+
     // Store on brightness or fallback to a default
-        
+
     // Parameters may come in useful later on
-    
+
     self.parameters = parameters;
-       
+
     var callbacks = [];
 
     // Define callbacks for entities - this model allows a widget to monitor multiple entities if needed
     // Initial will be called when the dashboard loads and state has been gathered for the entity
     // Update will be called every time an update occurs for that entity
-     
+
     self.OnStateAvailable = OnStateAvailable;
     self.OnStateUpdate = OnStateUpdate;
     self.OnSubStateAvailable = OnSubStateAvailable;
@@ -63,31 +63,31 @@ function basedisplay(widget_id, url, skin, parameters)
         }
     }
 
-    if ("entity" in self) 
+    if ("entity" in self)
     {
         monitored_entities.push({"entity": self.entity, "initial": self.OnStateAvailable, "update": self.OnStateUpdate})
     }
-    if ("sub_entity" in self) 
+    if ("sub_entity" in self)
     {
         monitored_entities.push({"entity": self.sub_entity, "initial": self.OnSubStateAvailable, "update": self.OnSubStateUpdate})
     }
 
     // Finally, call the parent constructor to get things moving
-    
+
     WidgetBase.call(self, widget_id, url, skin, parameters, monitored_entities, callbacks);
 
     // Function Definitions
-    
-    // The StateAvailable function will be called when 
+
+    // The StateAvailable function will be called when
     // self.state[<entity>] has valid information for the requested entity
     // state is the initial state
     // Methods
 
     function OnStateAvailable(self, state)
-    {    
+    {
         set_value(self, state)
     }
- 
+
     function OnStateUpdate(self, state)
     {
         set_value(self, state)
@@ -160,19 +160,19 @@ function baseerror(widget_id, url, skin, parameters)
 {
     // Will be using "self" throughout for the various flavors of "this"
     // so for consistency ...
-    
+
     self = this
-    
+
     // Initialization
-    
+
     self.widget_id = widget_id
-    
+
     // Store on brightness or fallback to a default
-        
+
     // Parameters may come in useful later on
-    
+
     self.parameters = parameters
-       
+
     var callbacks = []
 
     // Define callbacks for entities - this model allows a widget to monitor multiple entities if needed
@@ -182,7 +182,7 @@ function baseerror(widget_id, url, skin, parameters)
     var monitored_entities =  []
 
     // Finally, call the parent constructor to get things moving
-    
+
     WidgetBase.call(self, widget_id, url, skin, parameters, monitored_entities, callbacks)
 
 }
@@ -190,31 +190,31 @@ function basetemperature(widget_id, url, skin, parameters)
 {
     // Will be using "self" throughout for the various flavors of "this"
     // so for consistency ...
-    
+
     self = this
-    
+
     // Initialization
-    
+
     self.widget_id = widget_id
-    
+
     // Store on brightness or fallback to a default
-        
+
     // Parameters may come in useful later on
-    
+
     self.parameters = parameters
-       
+
     var callbacks = []
 
     // Define callbacks for entities - this model allows a widget to monitor multiple entities if needed
     // Initial will be called when the dashboard loads and state has been gathered for the entity
     // Update will be called every time an update occurs for that entity
-     
+
     self.OnStateAvailable = OnStateAvailable
     self.OnStateUpdate = OnStateUpdate
-    
+
     if ("entity" in parameters)
     {
-        var monitored_entities = 
+        var monitored_entities =
             [
                 {"entity": parameters.entity, "initial": self.OnStateAvailable, "update": self.OnStateUpdate}
             ]
@@ -224,22 +224,22 @@ function basetemperature(widget_id, url, skin, parameters)
         var monitored_entities =  []
     }
     // Finally, call the parent constructor to get things moving
-    
-    WidgetBase.call(self, widget_id, url, skin, parameters, monitored_entities, callbacks)  
+
+    WidgetBase.call(self, widget_id, url, skin, parameters, monitored_entities, callbacks)
 
     // Function Definitions
-    
-    // The StateAvailable function will be called when 
+
+    // The StateAvailable function will be called when
     // self.state[<entity>] has valid information for the requested entity
     // state is the initial state
     // Methods
 
     function OnStateAvailable(self, state)
-    {    
+    {
         drawChart(self, state)
         set_value(self, state)
     }
- 
+
     function OnStateUpdate(self, state)
     {
         set_value(self, state)
@@ -274,17 +274,17 @@ function basealarm(widget_id, url, skin, parameters)
 {
     // Will be using "self" throughout for the various flavors of "this"
     // so for consistency ...
-    
+
     self = this
-    
+
     // Initialization
-    
+
     self.widget_id = widget_id
 
     // Parameters may come in useful later on
-    
+
     self.parameters = parameters
-       
+
     self.OnButtonClick = OnButtonClick
     self.OnCloseClick = OnCloseClick
     self.OnDigitClick = OnDigitClick
@@ -292,8 +292,8 @@ function basealarm(widget_id, url, skin, parameters)
     self.OnArmAwayClick = OnArmAwayClick
     self.OnDisarmClick = OnDisarmClick
     self.OnTriggerClick = OnTriggerClick
-    
-    
+
+
     var callbacks =
         [
             {"selector": '#' + widget_id + ' > span', "action": "click", "callback": self.OnButtonClick},
@@ -313,19 +313,19 @@ function basealarm(widget_id, url, skin, parameters)
             {"selector": '#' + widget_id + ' #AA', "action": "click", "callback": self.OnArmAwayClick},
             {"selector": '#' + widget_id + ' #DA', "action": "click", "callback": self.OnDisarmClick},
             {"selector": '#' + widget_id + ' #TR', "action": "click", "callback": self.OnTriggerClick},
-                
+
         ]
- 
+
     // Define callbacks for entities - this model allows a widget to monitor multiple entities if needed
     // Initial will be called when the dashboard loads and state has been gathered for the entity
     // Update will be called every time an update occurs for that entity
-     
+
     self.OnStateAvailable = OnStateAvailable
     self.OnStateUpdate = OnStateUpdate
-    
+
     if ("entity" in parameters)
     {
-        var monitored_entities = 
+        var monitored_entities =
             [
                 {"entity": parameters.entity, "initial": self.OnStateAvailable, "update": self.OnStateUpdate}
             ]
@@ -335,27 +335,27 @@ function basealarm(widget_id, url, skin, parameters)
         var monitored_entities =  []
     }
     // Finally, call the parent constructor to get things moving
-    
-    WidgetBase.call(self, widget_id, url, skin, parameters, monitored_entities, callbacks)  
+
+    WidgetBase.call(self, widget_id, url, skin, parameters, monitored_entities, callbacks)
 
     self.set_view = set_view
-    
+
     // Function Definitions
-    
-    // The StateAvailable function will be called when 
+
+    // The StateAvailable function will be called when
     // self.state[<entity>] has valid information for the requested entity
     // state is the initial state
     // Methods
 
     function OnStateAvailable(self, state)
-    {    
+    {
         self.set_field(self, "state", self.map_state(self, state.state))
     }
- 
+
     function OnStateUpdate(self, state)
     {
         self.set_field(self, "state", self.map_state(self, state.state))
-    }  
+    }
 
     function OnButtonClick(self)
     {
@@ -401,48 +401,48 @@ function basealarm(widget_id, url, skin, parameters)
         }
         self.set_view(self)
     }
-    
+
     function OnArmHomeClick(self)
     {
-        
+
         args = self.parameters.post_service_ah
         args["code"] = self.code
         self.call_service(self, args)
-        
+
         self.code = self.parameters.initial_string
         self.set_view(self)
     }
-    
+
     function OnArmAwayClick(self)
     {
         args = self.parameters.post_service_aa
         args["code"] = self.code
         self.call_service(self, args)
-        
+
         self.code = self.parameters.initial_string
         self.set_view(self)
     }
-    
+
     function OnDisarmClick(self)
     {
         args = self.parameters.post_service_da
         args["code"] = self.code
         self.call_service(self, args)
-        
+
         self.code = self.parameters.initial_string
         self.set_view(self)
     }
-    
+
     function OnTriggerClick(self)
     {
         args = self.parameters.post_service_tr
         args["code"] = self.code
         self.call_service(self, args)
 
-        self.code = self.parameters.initial_string        
+        self.code = self.parameters.initial_string
         self.set_view(self)
     }
-    
+
     function set_view(self)
     {
         self.set_field(self, "code", self.code)
@@ -555,36 +555,36 @@ function baserss(widget_id, url, skin, parameters)
 {
     // Will be using "self" throughout for the various flavors of "this"
     // so for consistency ...
-    
+
     self = this;
-    
+
     // Initialization
-    
+
     self.widget_id = widget_id;
-    
+
     // Store on brightness or fallback to a default
-        
+
     // Parameters may come in useful later on
-    
+
     self.parameters = parameters;
 
     //
     // RSS Info is always in the default namespace
     //
     self.parameters.namespace = "default";
-       
+
     var callbacks = [];
 
     // Define callbacks for entities - this model allows a widget to monitor multiple entities if needed
     // Initial will be called when the dashboard loads and state has been gathered for the entity
     // Update will be called every time an update occurs for that entity
-     
+
     self.OnStateAvailable = OnStateAvailable;
     self.OnStateUpdate = OnStateUpdate;
-    
+
     if ("entity" in parameters)
     {
-        var monitored_entities = 
+        var monitored_entities =
             [
                 {"entity": parameters.entity, "initial": self.OnStateAvailable, "update": self.OnStateUpdate}
             ]
@@ -594,21 +594,21 @@ function baserss(widget_id, url, skin, parameters)
         var monitored_entities =  []
     }
     // Finally, call the parent constructor to get things moving
-    
-    WidgetBase.call(self, widget_id, url, skin, parameters, monitored_entities, callbacks)  
+
+    WidgetBase.call(self, widget_id, url, skin, parameters, monitored_entities, callbacks)
 
     // Function Definitions
-    
-    // The StateAvailable function will be called when 
+
+    // The StateAvailable function will be called when
     // self.state[<entity>] has valid information for the requested entity
     // state is the initial state
     // Methods
 
     function OnStateAvailable(self, state)
-    {    
+    {
         set_value(self, state)
     }
- 
+
     function OnStateUpdate(self, state)
     {
         set_value(self, state)
@@ -647,41 +647,41 @@ function baserss(widget_id, url, skin, parameters)
 function baseentitypicture(widget_id, url, skin, parameters)
 {
     self = this
-    
+
     // Initialization
-    
+
     self.parameters = parameters;
-    
+
     var callbacks = []
 
     self.OnStateAvailable = OnStateAvailable;
     self.OnStateUpdate = OnStateUpdate;
-    
-    var monitored_entities = 
+
+    var monitored_entities =
         [
             {"entity": parameters.entity, "initial": self.OnStateAvailable, "update": self.OnStateUpdate}
-        ]; 
-    
+        ];
+
     if ("base_url" in parameters && parameters.base_url != "") {
         self.base_url = parameters.base_url;
     }else{
         self.base_url = "";
     }
-        
-    // Call the parent constructor to get things moving   
+
+    // Call the parent constructor to get things moving
     WidgetBase.call(self, widget_id, url, skin, parameters, monitored_entities, callbacks);
 
     // Function Definitions
-    
+
     function OnStateAvailable(self, state)
-    {        
+    {
         set_view(self, state)
     }
-    
+
     // The OnStateUpdate function will be called when the specific entity
     // receives a state update - its new values will be available
     // in self.state[<entity>] and returned in the state parameter
-    
+
     function OnStateUpdate(self, state)
     {
         set_view(self, state)
@@ -691,10 +691,10 @@ function baseentitypicture(widget_id, url, skin, parameters)
     {
         if("entity_picture" in state.attributes){
             self.set_field(self, "img_inernal_src", self.base_url + state.attributes["entity_picture"]);
-            self.set_field(self, "img_internal_style", "");            
+            self.set_field(self, "img_internal_style", "");
         }else{
             self.set_field(self, "img_inernal_src", "");
-            self.set_field(self, "img_internal_style", "display: none;");            
+            self.set_field(self, "img_internal_style", "display: none;");
         }
     }
 }
@@ -702,19 +702,19 @@ function baselight(widget_id, url, skin, parameters)
 {
     // Will be using "self" throughout for the various flavors of "this"
     // so for consistency ...
-    
+
     self = this
-    
+
     // Initialization
-    
+
     self.widget_id = widget_id
-    
+
     // Parameters may come in useful later on
-    
+
     self.parameters = parameters
-    
+
     // Parameter handling
-    
+
     if ("monitored_entity" in self.parameters)
     {
         entity = self.parameters.monitored_entity
@@ -723,7 +723,7 @@ function baselight(widget_id, url, skin, parameters)
     {
         entity = self.parameters.entity
     }
-    
+
     if ("on_brightness" in self.parameters)
     {
         self.on_brightness = self.parameters.on_brightness
@@ -732,47 +732,47 @@ function baselight(widget_id, url, skin, parameters)
     {
         self.on_brightness = 127
     }
-    
+
     // Define callbacks for on click events
     // They are defined as functions below and can be any name as long as the
     // 'self'variables match the callbacks array below
     // We need to add them into the object for later reference
-   
+
     self.OnButtonClick = OnButtonClick
     self.OnRaiseLevelClick = OnRaiseLevelClick
     self.OnLowerLevelClick = OnLowerLevelClick
-    
+
     var callbacks =
         [
             {"selector": '#' + widget_id + ' > span', "action": "click", "callback": self.OnButtonClick},
             {"selector": '#' + widget_id + ' #level-up', "action": "click", "callback": self.OnRaiseLevelClick},
             {"selector": '#' + widget_id + ' #level-down', "action": "click", "callback": self.OnLowerLevelClick},
-        ]        
-     
+        ]
+
     // Define callbacks for entities - this model allows a widget to monitor multiple entities if needed
     // Initial will be called when the dashboard loads and state has been gathered for the entity
     // Update will be called every time an update occurs for that entity
-     
+
     self.OnStateAvailable = OnStateAvailable
     self.OnStateUpdate = OnStateUpdate
-    
-    var monitored_entities = 
+
+    var monitored_entities =
         [
             {"entity": entity, "initial": self.OnStateAvailable, "update": self.OnStateUpdate}
         ]
-    
+
     // Finally, call the parent constructor to get things moving
-    
-    WidgetBase.call(self, widget_id, url, skin, parameters, monitored_entities, callbacks)  
+
+    WidgetBase.call(self, widget_id, url, skin, parameters, monitored_entities, callbacks)
 
     // Function Definitions
-    
-    // The StateAvailable function will be called when 
+
+    // The StateAvailable function will be called when
     // self.state[<entity>] has valid information for the requested entity
     // state is the initial state
-    
+
     function OnStateAvailable(self, state)
-    {        
+    {
         self.state = state.state;
         if ("brightness" in state.attributes)
         {
@@ -784,11 +784,11 @@ function baselight(widget_id, url, skin, parameters)
         }
         set_view(self, self.state, self.level)
     }
-    
+
     // The OnStateUpdate function will be called when the specific entity
     // receives a state update - its new values will be available
     // in self.state[<entity>] and returned in the state parameter
-    
+
     function OnStateUpdate(self, state)
     {
         self.state = state.state;
@@ -803,12 +803,12 @@ function baselight(widget_id, url, skin, parameters)
 
         set_view(self, self.state, self.level)
     }
-    
+
     function OnButtonClick(self)
     {
         if (self.state == "off")
         {
-            args = self.parameters.post_service_active 
+            args = self.parameters.post_service_active
             if ("on_attributes" in self.parameters)
             {
                 for (var attr in self.parameters.on_attributes)
@@ -833,7 +833,7 @@ function baselight(widget_id, url, skin, parameters)
         {
             self.level = 255
         }
-        args = self.parameters.post_service_active 
+        args = self.parameters.post_service_active
         args["brightness"] = self.level
         self.call_service(self, args)
     }
@@ -852,10 +852,10 @@ function baselight(widget_id, url, skin, parameters)
         }
         else
         {
-            args = self.parameters.post_service_active 
+            args = self.parameters.post_service_active
             args["brightness"] = self.level
         }
-        self.call_service(self, args)             
+        self.call_service(self, args)
     }
 
     function toggle(self)
@@ -871,14 +871,14 @@ function baselight(widget_id, url, skin, parameters)
         }
         set_view(self, self.state, self.level)
     }
-    
-    // Set view is a helper function to set all aspects of the widget to its 
+
+    // Set view is a helper function to set all aspects of the widget to its
     // current state - it is called by widget code when an update occurs
     // or some other event that requires a an update of the view
-    
+
     function set_view(self, state, level)
     {
-        
+
         if (state == "on")
         {
             // Set Icon will set the style correctly for an icon
@@ -1194,73 +1194,73 @@ function baseswitch(widget_id, url, skin, parameters)
 {
     // Will be using "self" throughout for the various flavors of "this"
     // so for consistency ...
-    
+
     self = this;
-    
+
     // Initialization
-    
+
     self.widget_id = widget_id;
-    
+
     // Store on brightness or fallback to a default
-        
+
     // Parameters may come in useful later on
-    
+
     self.parameters = parameters;
-    
+
     // Toggle needs to be referenced from self for the timeout function
-    
+
     self.toggle = toggle;
-    
+
     // Define callbacks for on click events
     // They are defined as functions below and can be any name as long as the
     // 'self'variables match the callbacks array below
     // We need to add them into the object for later reference
-   
+
     self.OnButtonClick = OnButtonClick;
-    
+
     if ("enable" in self.parameters && self.parameters.enable == 1)
     {
         var callbacks =
             [
                 {"selector": '#' + widget_id + ' > span', "action": "click", "callback": self.OnButtonClick},
             ]
-    }            
+    }
     else
     {
         var callbacks = []
-    }        
+    }
     // Define callbacks for entities - this model allows a widget to monitor multiple entities if needed
     // Initial will be called when the dashboard loads and state has been gathered for the entity
     // Update will be called every time an update occurs for that entity
-     
+
     self.OnStateAvailable = OnStateAvailable
     self.OnStateUpdate = OnStateUpdate
-    
-    var monitored_entities = 
+
+    var monitored_entities =
         [
             {"entity": parameters.entity, "initial": self.OnStateAvailable, "update": self.OnStateUpdate},
         ];
-    
+
     // Finally, call the parent constructor to get things moving
-    
-    WidgetBase.call(self, widget_id, url, skin, parameters, monitored_entities, callbacks)  
+
+    WidgetBase.call(self, widget_id, url, skin, parameters, monitored_entities, callbacks)
 
     // Function Definitions
-    
-    // The StateAvailable function will be called when 
+
+    // The StateAvailable function will be called when
     // self.state[<entity>] has valid information for the requested entity
     // state is the initial state
-    
+
     function OnStateAvailable(self, state)
-    {        
+    {
         self.state = state.state;
         set_view(self, self.state)
     }
-    
+
     // The OnStateUpdate function will be called when the specific entity
     // receives a state update - its new values will be available
     // in self.state[<entity>] and returned in the state parameter
-    
+
     function OnStateUpdate(self, state)
     {
         if (!("ignore_state" in self.parameters) || self.parameters.ignore_state == 0)
@@ -1269,7 +1269,7 @@ function baseswitch(widget_id, url, skin, parameters)
             set_view(self, self.state)
         }
     }
-    
+
     function OnButtonClick(self)
     {
         if (self.state == self.parameters.state_active)
@@ -1287,7 +1287,7 @@ function baseswitch(widget_id, url, skin, parameters)
             setTimeout(function() { self.toggle(self) }, self.parameters["momentary"])
         }
     }
-    
+
     function toggle(self)
     {
         if (self.state == self.parameters.state_active)
@@ -1300,11 +1300,11 @@ function baseswitch(widget_id, url, skin, parameters)
         }
         set_view(self, self.state)
     }
-    
-    // Set view is a helper function to set all aspects of the widget to its 
+
+    // Set view is a helper function to set all aspects of the widget to its
     // current state - it is called by widget code when an update occurs
     // or some other event that requires a an update of the view
-    
+
     function set_view(self, state, level)
     {
         if (state == self.parameters.state_active || ("active_map" in self.parameters && self.parameters.active_map.includes(state)))
@@ -1330,51 +1330,51 @@ function basejavascript(widget_id, url, skin, parameters)
     this.widget_id = widget_id
     this.parameters = parameters
     this.skin = skin
-        
+
     // Will be using "self" throughout for the various flavors of "this"
     // so for consistency ...
-    
+
     self = this
-    
+
     // Initialization
-    
+
     self.widget_id = widget_id
-    
+
     // Store on brightness or fallback to a default
-        
+
     // Parameters may come in useful later on
-    
+
     self.parameters = parameters
-        
+
     // Define callbacks for on click events
     // They are defined as functions below and can be any name as long as the
     // 'self'variables match the callbacks array below
     // We need to add them into the object for later reference
-   
+
     self.OnButtonClick = OnButtonClick
 
     var callbacks =
         [
             {"selector": '#' + widget_id + ' > span', "action": "click","callback": self.OnButtonClick},
         ]
-       
+
     // Define callbacks for entities - this model allows a widget to monitor multiple entities if needed
     // Initial will be called when the dashboard loads and state has been gathered for the entity
     // Update will be called every time an update occurs for that entity
-    
-    var monitored_entities = 
+
+    var monitored_entities =
         []
-    
+
     // Finally, call the parent constructor to get things moving
-    
-    WidgetBase.call(self, widget_id, url, skin, parameters, monitored_entities, callbacks)  
+
+    WidgetBase.call(self, widget_id, url, skin, parameters, monitored_entities, callbacks)
 
     // Function Definitions
-    
-    // The StateAvailable function will be called when 
+
+    // The StateAvailable function will be called when
     // self.state[<entity>] has valid information for the requested entity
     // state is the initial state
-    
+
     if ("command" in parameters)
     {
         command = parameters.command
@@ -1393,9 +1393,9 @@ function basejavascript(widget_id, url, skin, parameters)
 
         if ("args" in parameters)
         {
-            
+
             url = url + "?";
-            
+
             for (var key in parameters.args)
             {
                 if (i != 0)
@@ -1472,12 +1472,12 @@ function basejavascript(widget_id, url, skin, parameters)
 
         command = "window.location.href = '" + url + "'"
     }
-    
+
     self.set_icon(self, "icon", self.icons.icon_inactive);
     self.set_field(self, "icon_style", self.css.icon_inactive_style);
-    
+
     self.command = command;
-    
+
     function OnButtonClick(self)
     {
         self.set_icon(self, "icon", self.icons.icon_active);
@@ -1561,7 +1561,7 @@ function baseweather(widget_id, url, skin, parameters)
 
     function OnStateAvailable(self, state)
     {
-        field = self.entities_map[state.entity_id] 
+        field = self.entities_map[state.entity_id]
         if (field == 'temperature')
         {
             self.set_field(self, "unit", state.attributes.unit_of_measurement)
@@ -1573,17 +1573,17 @@ function baseweather(widget_id, url, skin, parameters)
         else if (field == 'pressure')
         {
             self.set_field(self, "pressure_unit", state.attributes.unit_of_measurement)
-        } 
+        }
         else if (field == 'precip_intensity')
         {
             self.set_field(self, "rain_unit", state.attributes.unit_of_measurement)
-        } 
+        }
         set_view(self, state)
     }
 
     function set_view(self, state)
     {
-        field = self.entities_map[state.entity_id] 
+        field = self.entities_map[state.entity_id]
         if (field)
         {
             if (field == 'precip_type')
@@ -1612,52 +1612,52 @@ function baseclock(widget_id, url, skin, parameters)
 {
     // Will be using "self" throughout for the various flavors of "this"
     // so for consistency ...
-    
+
     self = this
-    
+
     // Initialization
-    
+
     self.widget_id = widget_id
-    
+
     // Parameters may come in useful later on
-    
+
     self.parameters = parameters
-    
+
     // Define callbacks for on click events
     // They are defined as functions below and can be any name as long as the
     // 'self'variables match the callbacks array below
     // We need to add them into the object for later reference
-   
-    var callbacks = []        
-     
+
+    var callbacks = []
+
     // Define callbacks for entities - this model allows a widget to monitor multiple entities if needed
     // Initial will be called when the dashboard loads and state has been gathered for the entity
     // Update will be called every time an update occurs for that entity
-     
+
     var monitored_entities = []
-    
+
     // Finally, call the parent constructor to get things moving
-    
-    WidgetBase.call(self, widget_id, url, skin, parameters, monitored_entities, callbacks)  
+
+    WidgetBase.call(self, widget_id, url, skin, parameters, monitored_entities, callbacks)
 
     // Function Definitions
-    
-    // The StateAvailable function will be called when 
+
+    // The StateAvailable function will be called when
     // self.state[<entity>] has valid information for the requested entity
     // state is the initial state
-    
+
 	updateTime(self)
-	
+
 	setInterval(updateTime, 500, self);
 
-	function updateTime(self) 
+	function updateTime(self)
 	{
 		var today = new Date();
 		h = today.getHours();
 		m = today.getMinutes();
 		s = today.getSeconds();
 		m = formatTime(m);
-		
+
 		if ("date_format_country" in self.parameters)
 		{
 			if ("date_format_options" in self.parameters)
@@ -1684,12 +1684,12 @@ function baseclock(widget_id, url, skin, parameters)
 			time = formatHours(h) + ":" + m;
 			pm = " " + formatAmPm(h)
 		}
-		
+
 		if ("show_seconds" in self.parameters && self.parameters.show_seconds == 1)
 		{
 			time = time + ":" + formatTime(s)
 		}
-		
+
 		time = time + pm
 		self.set_field(self, "time", time);
 	}
@@ -1739,15 +1739,15 @@ function baseicon(widget_id, url, skin, parameters)
 {
     // Will be using "self" throughout for the various flavors of "this"
     // so for consistency ...
-    
+
     self = this;
-    
+
     // Initialization
-    
+
     self.widget_id = widget_id;
-    
+
     // Parameters may come in useful later on
-    
+
     self.parameters = parameters;
 
     var callbacks = [];
@@ -1755,41 +1755,41 @@ function baseicon(widget_id, url, skin, parameters)
     self.OnStateAvailable = OnStateAvailable;
     self.OnStateUpdate = OnStateUpdate;
 
-    var monitored_entities = 
+    var monitored_entities =
         [
             {"entity": parameters.entity, "initial": self.OnStateAvailable, "update": self.OnStateUpdate}
         ];
-    
+
     // Finally, call the parent constructor to get things moving
-    
+
     WidgetBase.call(self, widget_id, url, skin, parameters, monitored_entities, callbacks);
 
     // Function Definitions
-    
-    // The StateAvailable function will be called when 
+
+    // The StateAvailable function will be called when
     // self.state[<entity>] has valid information for the requested entity
     // state is the initial state
-    
+
     function OnStateAvailable(self, state)
-    {        
+    {
         self.state = state.state;
         set_view(self, self.state)
     }
-    
+
     // The OnStateUpdate function will be called when the specific entity
     // receives a state update - its new values will be available
     // in self.state[<entity>] and returned in the state parameter
-    
+
     function OnStateUpdate(self, state)
     {
         self.state = state.state;
         set_view(self, self.state)
     }
 
-    // Set view is a helper function to set all aspects of the widget to its 
+    // Set view is a helper function to set all aspects of the widget to its
     // current state - it is called by widget code when an update occurs
     // or some other event that requires a an update of the view
-    
+
     function set_view(self, state, level)
     {
         if ("icons" in self.parameters)
@@ -1820,11 +1820,11 @@ function baseicon(widget_id, url, skin, parameters)
 }
 
 function baseheater(widget_id, url, skin, parameters)
-{  
+{
     self = this
     self.widget_id = widget_id
     self.parameters = parameters
-    
+
     if ("monitored_entity" in self.parameters)
     {
         entity = self.parameters.monitored_entity
@@ -1834,8 +1834,8 @@ function baseheater(widget_id, url, skin, parameters)
         icon_entity = self.parameters.icon_entity
         slider_entity = self.parameters.slider_entity
     }
-    
-       
+
+
     self.onChange = onChange
     self.OnButtonClick = OnButtonClick
 
@@ -1846,10 +1846,10 @@ function baseheater(widget_id, url, skin, parameters)
 
     self.OnStateAvailable = OnStateAvailable
     self.OnStateUpdate = OnStateUpdate
-    
+
     if ("icon_entity" in parameters)
     {
-        var monitored_entities = 
+        var monitored_entities =
             [
                 {"entity": parameters.icon_entity, "initial": self.OnStateAvailable, "update": self.OnStateUpdate},
                 {"entity": parameters.slider_entity, "initial": self.OnStateAvailable, "update": self.OnStateUpdate},
@@ -1859,19 +1859,19 @@ function baseheater(widget_id, url, skin, parameters)
     {
         var monitored_entities =  []
     }
-    
-    WidgetBase.call(self, widget_id, url, skin, parameters, monitored_entities, callbacks)  
+
+    WidgetBase.call(self, widget_id, url, skin, parameters, monitored_entities, callbacks)
 
 
     function OnStateAvailable(self, state)
-    {    
+    {
         if ("min" in state.attributes)
         {
             self.minvalue = state.attributes.min
             self.maxvalue = state.attributes.max
             self.stepvalue = state.attributes.step
             self.thermovalue = state.state
-            set_options(self, self.minvalue, self.maxvalue, self.stepvalue, self.thermovalue)            
+            set_options(self, self.minvalue, self.maxvalue, self.stepvalue, self.thermovalue)
         }
         else
         {
@@ -1879,13 +1879,13 @@ function baseheater(widget_id, url, skin, parameters)
             set_iconview(self, self.state)
         }
     }
- 
+
     function OnStateUpdate(self, state)
     {
         if ("min" in state.attributes)
         {
             self.thermovalue = state.state
-            set_sliderview(self, self.thermovalue)            
+            set_sliderview(self, self.thermovalue)
         }
         else
         {
@@ -1898,7 +1898,7 @@ function baseheater(widget_id, url, skin, parameters)
     {
         if (self.state == "off")
         {
-            args = self.parameters.post_service_active 
+            args = self.parameters.post_service_active
         }
         else
         {
@@ -1914,7 +1914,7 @@ function baseheater(widget_id, url, skin, parameters)
         if (self.thermovalue != self.ViewModel.Temperature())
         {
             self.thermovalue = self.ViewModel.Temperature()
-            args = self.parameters.post_service_slider_change 
+            args = self.parameters.post_service_slider_change
             args["value"] = self.thermovalue
 	    self.call_service(self, args)
         }
@@ -1942,7 +1942,7 @@ function baseheater(widget_id, url, skin, parameters)
     }
 
     function set_iconview(self, state)
-    {        
+    {
         if (state == "on")
         {
             self.set_icon(self, "icon", self.icons.icon_on)
@@ -1971,27 +1971,27 @@ function baseheater(widget_id, url, skin, parameters)
 function baseiframe(widget_id, url, skin, parameters)
 {
     self = this
-    
+
     // Initialization
-    
+
     self.parameters = parameters;
-    
+
     var callbacks = []
-    
+
     var monitored_entities = []
-    
+
     // Call the parent constructor to get things moving
-    
+
     WidgetBase.call(self, widget_id, url, skin, parameters, monitored_entities, callbacks);
 
     // Set the url
-    
+
     if ("url_list" in parameters || "img_list" in parameters || "entity_picture" in parameters)
     {
         self.index = 0;
         refresh_frame(self)
     }
-    
+
     function refresh_frame(self)
     {
         if ("url_list" in self.parameters)
@@ -2028,7 +2028,7 @@ function baseiframe(widget_id, url, skin, parameters)
             self.set_field(self, "img_src", url);
             size = 1
         }
-        
+
         if ("refresh" in self.parameters)
         {
             self.index = self.index + 1;
@@ -2168,19 +2168,19 @@ function baseinputnumber(widget_id, url, skin, parameters)
 {
     // Will be using "self" throughout for the various flavors of "this"
     // so for consistency ...
-    
+
     self = this
-    
+
     // Initialization
-    
+
     self.widget_id = widget_id
-    
+
     // Store on brightness or fallback to a default
-        
+
     // Parameters may come in useful later on
-    
+
     self.parameters = parameters
-       
+
     self.onChange = onChange
 
     var callbacks = [
@@ -2191,13 +2191,13 @@ function baseinputnumber(widget_id, url, skin, parameters)
             // Define callbacks for entities - this model allows a widget to monitor multiple entities if needed
     // Initial will be called when the dashboard loads and state has been gathered for the entity
     // Update will be called every time an update occurs for that entity
-     
+
     self.OnStateAvailable = OnStateAvailable
     self.OnStateUpdate = OnStateUpdate
-    
+
     if ("entity" in parameters)
     {
-        var monitored_entities = 
+        var monitored_entities =
             [
                 {"entity": parameters.entity, "initial": self.OnStateAvailable, "update": self.OnStateUpdate}
             ]
@@ -2207,18 +2207,18 @@ function baseinputnumber(widget_id, url, skin, parameters)
         var monitored_entities =  []
     }
     // Finally, call the parent constructor to get things moving
-    
-    WidgetBase.call(self, widget_id, url, skin, parameters, monitored_entities, callbacks)  
+
+    WidgetBase.call(self, widget_id, url, skin, parameters, monitored_entities, callbacks)
 
     // Function Definitions
-    
-    // The StateAvailable function will be called when 
+
+    // The StateAvailable function will be called when
     // self.state[<entity>] has valid information for the requested entity
     // state is the initial state
     // Methods
 
     function OnStateAvailable(self, state)
-    {    
+    {
         self.state = state.state
         self.minvalue = state.attributes.min
         self.maxvalue = state.attributes.max
@@ -2226,7 +2226,7 @@ function baseinputnumber(widget_id, url, skin, parameters)
         set_options(self, self.minvalue, self.maxvalue, self.stepvalue, state)
         set_value(self, state)
     }
- 
+
     function OnStateUpdate(self, state)
     {
         self.state = state.state
@@ -2266,17 +2266,17 @@ function baseselect(widget_id, url, skin, parameters)
 {
     // Will be using "self" throughout for the various flavors of "this"
     // so for consistency ...
-    
+
     self = this;
-    
+
     // Initialization
-    
+
     self.widget_id = widget_id;
 
     // Store on brightness or fallback to a default
-        
+
     // Parameters may come in useful later on
-    
+
     self.parameters = parameters;
 
     self.initial = 1
@@ -2290,13 +2290,13 @@ function baseselect(widget_id, url, skin, parameters)
     // Define callbacks for entities - this model allows a widget to monitor multiple entities if needed
     // Initial will be called when the dashboard loads and state has been gathered for the entity
     // Update will be called every time an update occurs for that entity
-     
+
     self.OnStateAvailable = OnStateAvailable;
     self.OnStateUpdate = OnStateUpdate;
-    
+
     if ("entity" in parameters)
     {
-        var monitored_entities = 
+        var monitored_entities =
             [
                 {"entity": parameters.entity, "initial": self.OnStateAvailable, "update": self.OnStateUpdate}
             ]
@@ -2306,23 +2306,23 @@ function baseselect(widget_id, url, skin, parameters)
         var monitored_entities =  []
     }
     // Finally, call the parent constructor to get things moving
-    
+
     WidgetBase.call(self, widget_id, url, skin, parameters, monitored_entities, callbacks);
 
     // Function Definitions
-    
-    // The StateAvailable function will be called when 
+
+    // The StateAvailable function will be called when
     // self.state[<entity>] has valid information for the requested entity
     // state is the initial state
     // Methods
 
     function OnStateAvailable(self, state)
-    {    
+    {
         self.state = state;
         set_options(self, state.attributes.options, state);
         set_value(self, state)
     }
- 
+
     function OnStateUpdate(self, state)
     {
         self.state = state.state;
@@ -2363,31 +2363,31 @@ function baseradial(widget_id, url, skin, parameters)
 {
     // Will be using "self" throughout for the various flavors of "this"
     // so for consistency ...
-    
+
     self = this
-    
+
     // Initialization
-    
+
     self.widget_id = widget_id
-    
+
     // Store on brightness or fallback to a default
-        
+
     // Parameters may come in useful later on
-    
+
     self.parameters = parameters
-       
+
     var callbacks = []
 
     // Define callbacks for entities - this model allows a widget to monitor multiple entities if needed
     // Initial will be called when the dashboard loads and state has been gathered for the entity
     // Update will be called every time an update occurs for that entity
-     
+
     self.OnStateAvailable = OnStateAvailable
     self.OnStateUpdate = OnStateUpdate
-    
+
     if ("entity" in parameters)
     {
-        var monitored_entities = 
+        var monitored_entities =
             [
                 {"entity": parameters.entity, "initial": self.OnStateAvailable, "update": self.OnStateUpdate}
             ]
@@ -2397,21 +2397,21 @@ function baseradial(widget_id, url, skin, parameters)
         var monitored_entities =  []
     }
     // Finally, call the parent constructor to get things moving
-    
-    WidgetBase.call(self, widget_id, url, skin, parameters, monitored_entities, callbacks)  
+
+    WidgetBase.call(self, widget_id, url, skin, parameters, monitored_entities, callbacks)
 
     // Function Definitions
-    
-    // The StateAvailable function will be called when 
+
+    // The StateAvailable function will be called when
     // self.state[<entity>] has valid information for the requested entity
     // state is the initial state
     // Methods
 
     function OnStateAvailable(self, state)
-    {    
+    {
         activateChart(self, state)
     }
- 
+
     function OnStateUpdate(self, state)
     {
         set_value(self, state)
@@ -2446,31 +2446,31 @@ function basegauge(widget_id, url, skin, parameters)
 {
     // Will be using "self" throughout for the various flavors of "this"
     // so for consistency ...
-    
+
     self = this
-    
+
     // Initialization
-    
+
     self.widget_id = widget_id
-    
+
     // Store on brightness or fallback to a default
-        
+
     // Parameters may come in useful later on
-    
+
     self.parameters = parameters
-       
+
     var callbacks = []
 
     // Define callbacks for entities - this model allows a widget to monitor multiple entities if needed
     // Initial will be called when the dashboard loads and state has been gathered for the entity
     // Update will be called every time an update occurs for that entity
-     
+
     self.OnStateAvailable = OnStateAvailable
     self.OnStateUpdate = OnStateUpdate
-    
+
     if ("entity" in parameters)
     {
-        var monitored_entities = 
+        var monitored_entities =
             [
                 {"entity": parameters.entity, "initial": self.OnStateAvailable, "update": self.OnStateUpdate}
             ]
@@ -2497,21 +2497,21 @@ function basegauge(widget_id, url, skin, parameters)
 
 
     // Finally, call the parent constructor to get things moving
-    
-    WidgetBase.call(self, widget_id, url, skin, parameters, monitored_entities, callbacks)  
+
+    WidgetBase.call(self, widget_id, url, skin, parameters, monitored_entities, callbacks)
 
     // Function Definitions
-    
-    // The StateAvailable function will be called when 
+
+    // The StateAvailable function will be called when
     // self.state[<entity>] has valid information for the requested entity
     // state is the initial state
     // Methods
 
     function OnStateAvailable(self, state)
-    {    
+    {
         set_value(self, state)
     }
- 
+
     function OnStateUpdate(self, state)
     {
         set_value(self, state)

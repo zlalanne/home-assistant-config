@@ -15,4 +15,3 @@ switches:
         entity_id: automation.office_fan_turn_on
       - service: fan.turn_off
         entity_id: fan.office_fan_switch_level
-

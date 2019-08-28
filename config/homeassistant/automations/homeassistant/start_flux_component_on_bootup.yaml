@@ -9,5 +9,5 @@ trigger:
     event: start
 action:
   - service: switch.turn_on
-    entity_id: switch.flux 
+    entity_id: switch.flux
   - service: switch.flux_update

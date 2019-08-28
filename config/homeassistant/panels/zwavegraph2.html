@@ -18,7 +18,7 @@
         stroke: #2470A2;
       }
 
-      .node.layer-1 text { 
+      .node.layer-1 text {
         fill: #1E5B84;
       }
 
@@ -32,7 +32,7 @@
         fill: #1BBC9B;
       }
 
-      .node.layer-2 text { 
+      .node.layer-2 text {
         fill: #11512C;
       }
 
@@ -139,7 +139,7 @@
 
       .node > polygon {
         opacity: 0.7;
-      } 
+      }
 
       .node > rect {
         stroke-width: 1px;
@@ -312,13 +312,13 @@
         // Use D3 to select element, change color and size
         svg.querySelectorAll(".edgePath")
           .forEach(function (node) { node.style.opacity = "0.3" });
-        
+
         var edges = svg.querySelectorAll(".edgePath.node-" + d);
         for(let i = 0; i < edges.length; i++){
           edges[i].style.opacity = "1"
           edges[i].style['stroke-width'] = "2";
           };
-        
+
         var neighbors = svg.querySelectorAll(".node.neighbor-" + d);
         for(let i = 0; i < neighbors.length; i++){
           neighbors[i].style.opacity = "0.7"
@@ -380,7 +380,7 @@
       svg.selectAll(".node")
         .on("mouseover", handleMouseOver)
         .on("mouseout", handleMouseOut);
-      
+
 
       this.addLegend(svg, legends, 5, 20);
 
@@ -460,7 +460,7 @@
         };
 
         entity["shape"] = id === hubNode ? "house" : (entity.forwards || batlev === undefined ? "rect" : "battery");
-        
+
         if (node.attributes["is_failed"]) {
           entity.label = "FAILED: " + entity.label;
           entity["font.multi"] = true;
@@ -485,7 +485,7 @@
         let previousRow = [hubNode];
         let mappedNodes = [hubNode];
         let layers = [];
-        
+
         while (previousRow.length > 0) {
           layer = layer + 1;
           let nextRow = [];
@@ -493,13 +493,13 @@
           layers[layer] = layerMembers;
 
           for (let target in previousRow) {
-            
+
             // assign node to layer
             result.nodes.filter((n) => { return ((n.id == previousRow[target]) && (n.group = "unset")) })
               .every((d) => {
                 d.class = "layer-" + layer; d.layer = layer;
                 if(d.failed){
-                  d.class = d.class + " Error"                  
+                  d.class = d.class + " Error"
                 }
 
                 if (d.neighbors !== undefined) {

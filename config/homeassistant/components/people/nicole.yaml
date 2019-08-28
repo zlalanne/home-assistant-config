@@ -4,4 +4,3 @@ name: Nicole
 id: nicole
 device_trackers:
   - device_tracker.nicole_phone
-

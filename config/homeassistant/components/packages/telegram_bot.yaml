@@ -1,5 +1,5 @@
 ---
-# Use Telegram on your mobile or desktop device to send and receive messages 
+# Use Telegram on your mobile or desktop device to send and receive messages
 # or commands to/from your Home Assistant.
 #
 # https://www.home-assistant.io/components/telegram_bot/
@@ -9,5 +9,3 @@ telegram_bot:
     api_key: !secret telegram_api_key
     allowed_chat_ids:
       - !secret zack_telegram_chat_id
-
-

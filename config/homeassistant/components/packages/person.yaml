@@ -1,7 +1,7 @@
 ---
 # The person component allows connecting device tracker entities to one or more
 # person entities. The state updates of a connected device tracker will set the
-# state of the person. 
+# state of the person.
 #
 # https://www.home-assistant.io/components/person/
 #

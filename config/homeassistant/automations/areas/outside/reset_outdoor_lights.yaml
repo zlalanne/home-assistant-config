@@ -10,4 +10,3 @@ trigger:
 action:
   - service: scene.turn_on
     entity_id: scene.night_outdoor_lights
-
