@@ -6,7 +6,7 @@ platform: template
 switches:
   office_thermostat_switch:
     friendly_name: Office Thermostat Switch
-    value_template:  "{{ is_state('automation.office_fan_turn_on', 'on') }}"
+    value_template: "{{ is_state('automation.office_fan_turn_on', 'on') }}"
     turn_on:
       service: automation.turn_on
       entity_id: automation.office_fan_turn_on

@@ -7,4 +7,4 @@ vacuum_back_hallway:
       data:
         entity_id: vacuum.xiaomi_vacuum_cleaner
         command: app_zoned_clean
-        params: [[16265,37878,19215,39528,1]]
+        params: [[16265, 37878, 19215, 39528, 1]]

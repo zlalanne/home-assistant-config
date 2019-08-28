@@ -1,3 +1,5 @@
+---
+
 esphome:
   name: office
   platform: ESP8266
@@ -29,7 +31,7 @@ sensor:
     update_interval: 60s
 
 status_led:
-    pin: 16
+  pin: 16
 
 # Enable logging
 logger:

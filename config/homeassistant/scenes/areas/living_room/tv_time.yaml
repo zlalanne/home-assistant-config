@@ -3,6 +3,6 @@
 name: TV Time
 entities:
   light.living_room_light:
-    state: on
+    state: true
     transition: 10
     brightness: 50

@@ -7,4 +7,4 @@ vacuum_laundry_room:
       data:
         entity_id: vacuum.xiaomi_vacuum_cleaner
         command: app_zoned_clean
-        params: [[12010,37279,15260,39529,1]]
+        params: [[12010, 37279, 15260, 39529, 1]]

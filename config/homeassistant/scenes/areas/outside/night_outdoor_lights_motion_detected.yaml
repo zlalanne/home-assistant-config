@@ -3,6 +3,6 @@
 name: Night Outdoor Lights Motion Detected
 entities:
   light.driveway_lantern_light:
-    state: on
+    state: true
     transition: 5
     brightness_pct: 100

@@ -1,3 +1,4 @@
+---
 
 exclude: homeassistant/custom_components
 
@@ -8,7 +9,19 @@ repos:
       - id: trailing-whitespace
       - id: end-of-file-fixer
       - id: check-added-large-files
+      - id: check-json
+      - id: check-merge-conflict
+      - id: check-symlinks
+      - id: mixed-line-ending
+      - id: check-xml
+      - id: check-yaml
+        args: [--unsafe]
+      - id: sort-simple-yaml
   - repo: https://github.com/IamTheFij/docker-pre-commit.git
     rev: v1.0.0
     hooks:
-     - id: docker-compose-check
+      - id: docker-compose-check
+  - repo: https://github.com/adrienverge/yamllint.git
+    rev: v1.17.0
+    hooks:
+      - id: yamllint

@@ -3,6 +3,6 @@
 name: Lights Greeting
 entities:
   light.living_room_light:
-    state: on
+    state: true
     transition: 10
     brightness: 80

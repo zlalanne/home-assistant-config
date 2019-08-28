@@ -1,7 +1,7 @@
 ---
 
 alias: Reset Outdoor Lights Night
-initial_state: False
+initial_state: false
 trigger:
   - platform: event
     event_type: timer.finished

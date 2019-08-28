@@ -18,7 +18,7 @@ wifi:
     gateway: 192.168.1.1
 
 status_led:
-    pin: 16
+  pin: 16
 
 # Enable logging
 logger:
@@ -49,7 +49,7 @@ switch:
 binary_sensor:
   - platform: gpio
     name: Button
-    internal: True
+    internal: true
     pin:
       number: 5
       mode: INPUT_PULLUP

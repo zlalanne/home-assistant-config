@@ -8,4 +8,4 @@ target_sensor: sensor.office_temperature
 initial_hvac_mode: "cool"
 cold_tolerance: 2
 hot_tolerance: -2
-ac_mode: True
+ac_mode: true

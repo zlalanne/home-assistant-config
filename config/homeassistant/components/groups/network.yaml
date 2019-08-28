@@ -2,7 +2,7 @@
 
 network:
   name: Network
-  view: yes
+  view: true
   entities:
     - group.pihole
     - group.network_speeds

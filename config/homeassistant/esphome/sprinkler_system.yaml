@@ -1,3 +1,5 @@
+---
+
 esphome:
   name: sprinkler_system
   platform: ESP8266
@@ -27,25 +29,25 @@ switch:
       return switches;
 
     switches:
-      -  name: "Sprinkler Zone 1"
-         inverted: yes
-      -  name: "Sprinkler Zone 2"
-         inverted: yes
-      -  name: "Sprinkler Zone 3"
-         inverted: yes
-      -  name: "Sprinkler Zone 4"
-         inverted: yes
-      -  name: "Sprinkler Zone 5"
-         inverted: yes
-      -  name: "Sprinkler Zone 6"
-         inverted: yes
-      -  name: "Sprinkler Zone 7"
-         inverted: yes
-      -  name: "Sprinkler Zone 8"
-         inverted: yes
+      - name: "Sprinkler Zone 1"
+        inverted: true
+      - name: "Sprinkler Zone 2"
+        inverted: true
+      - name: "Sprinkler Zone 3"
+        inverted: true
+      - name: "Sprinkler Zone 4"
+        inverted: true
+      - name: "Sprinkler Zone 5"
+        inverted: true
+      - name: "Sprinkler Zone 6"
+        inverted: true
+      - name: "Sprinkler Zone 7"
+        inverted: true
+      - name: "Sprinkler Zone 8"
+        inverted: true
 
 status_led:
-    pin: 16
+  pin: 16
 
 # Enable logging
 logger:

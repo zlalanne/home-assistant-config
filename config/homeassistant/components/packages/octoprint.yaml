@@ -5,6 +5,6 @@ octoprint:
     api_key: !secret octoprint_api_key
     name: "Ender 3"
     port: 443
-    ssl: True
+    ssl: true
     number_of_tools: 1
-    bed: True
+    bed: true

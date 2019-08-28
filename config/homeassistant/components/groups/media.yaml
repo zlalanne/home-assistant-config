@@ -1,7 +1,7 @@
 ---
 
 Media:
-  view: yes
+  view: true
   entities:
     - media_player.courtyard_tv
     - media_player.living_room_tv

@@ -1,7 +1,7 @@
 ---
 
 alias: Motion Detected Outdoors
-initial_state: False
+initial_state: false
 trigger:
   - platform: state
     entity_id: binary_sensor.driveway_motion_sensor

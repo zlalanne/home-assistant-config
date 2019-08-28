@@ -3,11 +3,11 @@
 name: Morning
 entities:
   light.kitchen_lights:
-    state: on
+    state: true
   light.living_room_light:
-    state: on
+    state: true
     brightness_pct: 20
   light.office_lamp_left:
-    state: on
+    state: true
   switch.flux:
-    state: on
+    state: true
