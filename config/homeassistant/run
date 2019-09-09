@@ -1,0 +1,18 @@
+#!/bin/sh
+#
+# Wrapper around Home Assistant to run in a virtualenv owned by a non-root user
+# so that Home Assistant can install packages without needing root
+
+set -e
+
+VENV="/var/tmp/venv"
+log(){ echo "$*" >&2; }
+
+log "Running as $(id -u):$(id -g)"
+
+log "Initializing venv in $VENV"
+python3 -m venv --system-site-packages "$VENV"
+. "$VENV/bin/activate"
+
+log "Starting homeassistant"
+exec python3 -m homeassistant --config /config
