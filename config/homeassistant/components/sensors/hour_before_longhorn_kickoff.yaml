@@ -1,0 +1,17 @@
+---
+# Sensor to track how many minutes before the next kickoff of a Texas Longhorns
+# football game. Uses Google Calendar to determine when the next game will start
+# and does a simple calculation with the current time.
+
+platform: template
+sensors:
+  time_until_next_longhorn_game:
+    friendly_name: Time Until Next Longhorn Game
+    entity_id: sensor.time
+    unit_of_measurement: minutes
+    value_template: >-
+      {% if states.calendar.texas_longhorns.attributes.start_time %}
+        {{((as_timestamp(states.calendar.texas_longhorns.attributes.start_time) - as_timestamp(now())) / 60) | int }}
+      {%- else -%}
+        0
+      {%- endif %}
