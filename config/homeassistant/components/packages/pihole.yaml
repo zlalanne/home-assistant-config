@@ -1,0 +1,8 @@
+---
+# The pi_hole integration allows you to retrieve and display statistics from a
+# Pi-hole system.
+#
+# https://www.home-assistant.io/components/pi_hole/
+
+pi_hole:
+  host: 192.168.1.3

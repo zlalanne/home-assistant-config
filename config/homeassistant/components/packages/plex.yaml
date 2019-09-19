@@ -1,0 +1,12 @@
+---
+# The plex platform allows you to connect to a Plex Media Server. Once
+# connected, Plex Clients playing media from the connected Plex Media Server
+# will show up as Media Players and report playback status via a Sensor in Home
+# Assistant. The Media Players will allow you to control media playback and see
+# the current playing item.
+#
+# https://www.home-assistant.io/components/plex/
+
+plex:
+  host: 192.168.1.2
+  token: !secret plex_token
