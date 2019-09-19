@@ -4,12 +4,12 @@ alias: Water Backyard
 trigger:
   - platform: sun
     event: sunrise
-    offset: "-01:00:00"
+    offset: "-01:30:00"
 condition:
   - condition: time
     weekday:
-      - thu
-      - sun
+      - tue
+      - sat
   - condition: numeric_state
     entity_id: "sensor.dark_sky_precip_probability_0d"
     below: 60
