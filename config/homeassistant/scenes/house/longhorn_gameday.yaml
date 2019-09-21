@@ -1,0 +1,11 @@
+---
+
+name: Longhorn Gameday
+entities:
+  switch.flux:
+    state: false
+  light.kitchen_lights:
+    state: true
+    white_value: 0
+    rgb_color: [255, 89, 00]
+    brightness_pct: 100

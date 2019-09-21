@@ -1,0 +1,14 @@
+---
+
+alias: Longhorn Finish Gameday
+trigger:
+  - platform: state
+    entity_id: calendar.texas_longhorns
+    from: "on"
+    to: "off"
+    for:
+      hours: 1
+      minutes: 30
+action:
+  - service: scene.turn_on
+    entity_id: scene.morning

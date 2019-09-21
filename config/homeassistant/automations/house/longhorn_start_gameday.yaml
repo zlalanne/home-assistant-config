@@ -1,0 +1,14 @@
+---
+
+alias: Longhorn Start Gameday
+trigger:
+  - platform: state
+    entity_id: sensor.time_until_next_longhorn_game
+    to: "60"
+action:
+  - service: scene.turn_on
+    entity_id: scene.longhorn_gameday
+  - service: tts.google_translate_say
+    entity_id: media_player.kitchen_speaker
+    data:
+      message: "Longhorn's kickoff in one hour!"
