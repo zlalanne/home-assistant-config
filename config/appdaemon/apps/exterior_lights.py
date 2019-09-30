@@ -31,7 +31,7 @@ class ExteriorLightsNightRoutine(hass.Hass):
         self.run_at_sunset(self.turn_on)
         self.run_at_sunrise(self.turn_off)
 
-    def turn_on(self, event_name, data, kwargs):
+    def turn_on(self, kwargs):
         self.running = True
 
         is_holiday = self.get_state(self.calendar) == "on"
@@ -50,7 +50,7 @@ class ExteriorLightsNightRoutine(hass.Hass):
             # Regular night, just turn on the lights
             self.call_service("light/turn_on", entity_id=self.light, color_name="white")
 
-    def turn_off(self, event_name, data, kwargs):
+    def turn_off(self, kwargs):
         self.running = False
         self.call_service("light/turn_off", entity_id=self.light)
 
