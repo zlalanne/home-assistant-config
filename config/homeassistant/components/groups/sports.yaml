@@ -1,0 +1,9 @@
+---
+
+sports:
+  name: Sports
+  control: hidden
+  entities:
+    - calendar.texas_longhorns
+    - calendar.minnesota_vikings
+    - sensor.time_until_next_longhorn_game

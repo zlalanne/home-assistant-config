@@ -4,7 +4,7 @@ version: "3"
 
 services:
   homeassistant:
-    image: homeassistant/home-assistant:0.99.1
+    image: homeassistant/home-assistant:0.99.3
     user: 1000:1000
     volumes:
       - ./config/homeassistant/:/config
@@ -37,7 +37,7 @@ services:
     volumes:
       - ./config/pgadmin:/pgadmin
   appdaemon:
-    image: acockburn/appdaemon:3.0.2
+    image: acockburn/appdaemon:3.0.5
     user: 1000:1000
     volumes:
       - ./config/appdaemon:/conf

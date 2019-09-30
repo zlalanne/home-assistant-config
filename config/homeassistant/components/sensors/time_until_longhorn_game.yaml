@@ -8,6 +8,7 @@ sensors:
   time_until_next_longhorn_game:
     friendly_name: Time Until Next Longhorn Game
     entity_id: sensor.time
+    icon_template: mdi:alarm
     unit_of_measurement: minutes
     value_template: >-
       {% if states.calendar.texas_longhorns.attributes.start_time %}

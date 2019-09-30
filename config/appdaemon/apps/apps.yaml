@@ -8,3 +8,8 @@ telegram_bot:
   module: telegram_bot
   class: TelegramBotEventListener
   garage: cover.garage_door
+
+zwa002_update:
+  module: zwa002_update
+  class: ZWA002UpdateListener
+  light: light.aeotec_limited_zwa002_led_bulb_6_multi_color_level
