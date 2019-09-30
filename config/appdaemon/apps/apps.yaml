@@ -13,3 +13,9 @@ zwa002_update:
   module: zwa002_update
   class: ZWA002UpdateListener
   light: light.aeotec_limited_zwa002_led_bulb_6_multi_color_level
+
+exterior_lights:
+  module: exterior_lights
+  class: ExteriorLightsNightRoutine
+  light: light.aeotec_limited_zwa002_led_bulb_6_multi_color_level
+  calendar: calendar.holidays_in_united_states
