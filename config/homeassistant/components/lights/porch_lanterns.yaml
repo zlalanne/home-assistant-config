@@ -1,0 +1,8 @@
+---
+# Combine the two porch lights into a group
+
+platform: group
+name: Porch Lanterns
+entities:
+  - light.porch_lantern_left
+  - light.porch_lantern_right
