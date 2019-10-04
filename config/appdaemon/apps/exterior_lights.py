@@ -25,14 +25,13 @@ class ExteriorLightsNightRoutine(hass.Hass):
         self.light = self.args["light"]
         self.calendar = self.args["calendar"]
 
-        self.running = False
-        self.color_index = 1
+        self.timer_handle = None
+        self.color_index = 0
 
         self.run_at_sunset(self.turn_on)
         self.run_at_sunrise(self.turn_off)
 
     def turn_on(self, kwargs):
-        self.running = True
 
         is_holiday = self.get_state(self.calendar) == "on"
         holiday = self.get_state(self.calendar, attribute="message")
@@ -45,24 +44,25 @@ class ExteriorLightsNightRoutine(hass.Hass):
             )
             if len(self.colors) != 1:
                 self.color_index = 1
-                self.run_in(self.transition_color, 300)
+                self.timer_handle = self.run_in(self.transition_color, 60)
         else:
             # Regular night, just turn on the lights
             self.call_service("light/turn_on", entity_id=self.light, color_name="white")
+            self.timer_handle = None
 
     def turn_off(self, kwargs):
-        self.running = False
         self.call_service("light/turn_off", entity_id=self.light)
+        if self.timer_handle:
+            self.cancel_timer(self.timer_handle)
 
     def transition_color(self, kwargs):
-        if self.running:
-            self.call_service(
-                "light/turn_on",
-                entity_id=self.light,
-                color_name=self.colors[self.color_index],
-            )
+        self.call_service(
+            "light/turn_on",
+            entity_id=self.light,
+            color_name=self.colors[self.color_index],
+        )
 
-            # Increment index of colors. Reset to beginning if cycled through.
-            self.color_index = (self.color_index + 1) % len(self.colors)
+        # Increment index of colors. Reset to beginning if cycled through.
+        self.color_index = (self.color_index + 1) % len(self.colors)
 
-            self.run_in(self.transition_color, 300)
+        self.run_in(self.transition_color, 60)
