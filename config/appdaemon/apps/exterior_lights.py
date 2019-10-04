@@ -44,7 +44,7 @@ class ExteriorLightsNightRoutine(hass.Hass):
             )
             if len(self.colors) != 1:
                 self.color_index = 1
-                self.timer_handle = self.run_in(self.transition_color, 60)
+                self.timer_handle = self.run_in(self.transition_color, 300)
         else:
             # Regular night, just turn on the lights
             self.call_service("light/turn_on", entity_id=self.light, color_name="white")
@@ -65,4 +65,4 @@ class ExteriorLightsNightRoutine(hass.Hass):
         # Increment index of colors. Reset to beginning if cycled through.
         self.color_index = (self.color_index + 1) % len(self.colors)
 
-        self.run_in(self.transition_color, 60)
+        self.run_in(self.transition_color, 300)
