@@ -108,3 +108,9 @@ services:
       - ./config/homeassistant/openzwave_config:/openzwave_config
     ports:
       - "8091:8091"
+  icbinv:
+    image: dmkif/icantbelieveitsnotvaletudo:latest
+    user: 1000:1000
+    volumes:
+      - ./config/icbinv/config.json:/app/config.json
+    network_mode: "host"

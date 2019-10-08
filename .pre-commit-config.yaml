@@ -1,6 +1,7 @@
 ---
 
 exclude: homeassistant/custom_components
+exclude: www/community
 
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks

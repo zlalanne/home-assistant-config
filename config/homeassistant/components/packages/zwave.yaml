@@ -8,7 +8,7 @@ zwave:
   usb_path: /dev/zwave
   # Autoheal is bad:
   # https://github.com/home-assistant/architecture/issues/81#issuecomment-478444085
-  autoheal: "False"
+  autoheal: false
   network_key: !secret zwave_network_key
   polling_interval: 60000
   device_config_glob:

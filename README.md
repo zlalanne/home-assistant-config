@@ -16,6 +16,7 @@ Services Used:
 * `openzwave` for advanced Z-Wave configuration outside of Home Assistant
 * `portainer` for monitoring Docker containers
 * `esphome` for monitoring and updating esphome based devices
+* `icbinv` for generating images of my Vacuum cleaning progress
 
 Most of my hardware setup is detailed [on my blog](https://selfhostedhome.com/my-setup/).
 

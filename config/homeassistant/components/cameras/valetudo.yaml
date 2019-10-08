@@ -1,0 +1,7 @@
+---
+
+platform: generic
+name: Vacuum Map
+still_image_url: !secret icbinv_map_url
+content_type: image/png
+framerate: 1
