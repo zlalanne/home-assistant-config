@@ -1,0 +1,10 @@
+---
+# Adds an iframe panel to the Home Assistant frontend for Valetudo.
+# This allows me to access Valetudo straight from Home Asssitant's UI
+#
+# https://www.home-assistant.io/components/panel_iframe/
+#
+valetudo:
+  title: Valetudo
+  icon: mdi:robot-vacuum-variant
+  url: !secret panel_iframe_valetudo_url
