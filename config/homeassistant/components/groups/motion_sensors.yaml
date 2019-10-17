@@ -8,3 +8,7 @@ motion_sensors:
     - sensor.driveway_motion_sensor_battery
     - binary_sensor.driveway_motion_sensor_battery_low
     - alert.driveway_motion_sensor_battery_low
+    - binary_sensor.master_bathroom_motion_sensor
+    - sensor.master_bathroom_multisensor_burglar
+    - sensor.master_bathroom_multisensor_battery_level
+    - binary_sensor.master_bathroom_multisensor

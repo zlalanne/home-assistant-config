@@ -1,0 +1,4 @@
+---
+
+sensor.master_bathroom_multisensor_relative_humidity:
+  device_class: humidity

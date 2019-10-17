@@ -1,0 +1,4 @@
+---
+
+sensor.master_bathroom_multisensor_luminance:
+  device_class: illuminance

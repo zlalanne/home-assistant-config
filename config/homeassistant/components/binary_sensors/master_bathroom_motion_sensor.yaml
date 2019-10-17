@@ -1,0 +1,8 @@
+---
+
+platform: template
+sensors:
+  master_bathroom_motion_sensor:
+    friendly_name: "Master Bathroom Motion Sensor"
+    device_class: motion
+    value_template: "{{ is_state('sensor.master_bathroom_multisensor_burglar', '8') }}"
