@@ -19,3 +19,10 @@ exterior_lights:
   class: ExteriorLightsNightRoutine
   light: light.porch_lanterns
   calendar: calendar.holidays_in_united_states
+
+bathroom_vent_fan:
+  module: bathroom_vent_fan
+  class: BathroomVentFan
+  fan: fan.office_fan_switch_level
+  trend_sensor: binary_sensor.master_bathroom_humidity_rising_3_min
+  humidity_sensor: sensor.master_bathroom_multisensor_relative_humidity
