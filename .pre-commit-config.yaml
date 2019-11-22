@@ -1,7 +1,11 @@
 ---
 
-exclude: ^config/homeassistant/custom_components/hacs/
-exclude: ^config/homeassistant/www/community/
+exclude: |
+  (?x)(
+       ^config/homeassistant/.HA_VERSION|
+       ^config/homeassistant/custom_components/|
+       ^config/homeassistant/www/community/
+  )
 
 repos:
   - repo: meta
@@ -12,14 +16,11 @@ repos:
     hooks:
       - id: trailing-whitespace
       - id: end-of-file-fixer
-        exclude: config/homeassistant/.HA_VERSION
-        exclude: config/homeassistant/custom_components
       - id: check-added-large-files
       - id: check-json
       - id: check-merge-conflict
       - id: check-symlinks
       - id: mixed-line-ending
-        exclude: config/homeassistant/custom_components
       - id: check-xml
       - id: check-yaml
         args: [--unsafe]
