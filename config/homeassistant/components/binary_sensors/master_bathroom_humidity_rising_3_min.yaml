@@ -1,0 +1,12 @@
+---
+# Track if humidity in bathroom is rising at a fast rate
+
+platform: trend
+sensors:
+  master_bathroom_humidity_rising_3_min:
+    # Measured in humidity %/second
+    min_gradient: 0.012
+    sample_duration: 180
+    max_samples: 15
+    entity_id: sensor.master_bathroom_multisensor_relative_humidity
+    friendly_name: Master Bedroom Humidity Rising (3 Mins)

@@ -1,0 +1,10 @@
+---
+# Sensor to track how the bathroom humidity is trending
+
+platform: template
+sensors:
+  bathroom_humidity_trend_3_min:
+    friendly_name: Bathroom Humidity Trend 3 Minutes
+    unit_of_measurement: "%/s"
+    value_template: >-
+      {{ state_attr('binary_sensor.master_bathroom_humidity_rising_3_min', 'gradient') }}

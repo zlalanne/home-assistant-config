@@ -1,11 +1,11 @@
 ---
 
-exclude: homeassistant/custom_components
-exclude: www/community
+exclude: ^config/homeassistant/custom_components/hacs/
+exclude: ^config/homeassistant/www/community/
 
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v2.3.0
+    rev: v2.4.0
     hooks:
       - id: trailing-whitespace
       - id: end-of-file-fixer

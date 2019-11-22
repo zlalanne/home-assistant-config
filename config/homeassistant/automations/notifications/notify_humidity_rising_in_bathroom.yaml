@@ -1,0 +1,13 @@
+---
+
+alias: Send a notice when humidity rising in bathroom
+trigger:
+  - platform: state
+    entity_id: binary_sensor.master_bathroom_humidity_rising
+    to: "off"
+    from: "on"
+action:
+  - service: notify.zack_telegram
+    data:
+      message: "Humidity Rising"
+      title: "Humidity Update"
