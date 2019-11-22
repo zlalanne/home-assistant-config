@@ -4,6 +4,9 @@ exclude: ^config/homeassistant/custom_components/hacs/
 exclude: ^config/homeassistant/www/community/
 
 repos:
+  - repo: meta
+    hooks:
+      - id: check-useless-excludes
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v2.4.0
     hooks:
