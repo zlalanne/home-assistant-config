@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+#
+# Bash script to startup all components of home assistant, mostly through
+# docker and checking if services are available using wait_for_it
+
+declare -r DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+declare -r TIMEOUT=240
+declare -r WAIT="${DIR}/wait-for-it.sh --timeout=${TIMEOUT}"
+
+start() {
+    cd ${DIR}
+
+    docker-compose up -d influxdb
+    ${WAIT} localhost:8086
+
+    docker-compose up -d postgres
+    ${WAIT} localhost:5432
+
+    docker-compose up -d pgadmin
+    ${WAIT} localhost:8087
+
+    docker-compose up -d grafana
+    ${WAIT} localhost:3000
+
+    docker-compose up -d mosquitto
+    ${WAIT} localhost:1883
+
+    docker-compose up -d icbinv
+    ${WAIT} localhost:3030
+
+    docker-compose up -d esphome
+    ${WAIT} localhost:6052
+
+    docker-compose up -d homeassistant
+    ${WAIT} localhost:8123
+
+    docker-compose up -d appdaemon
+    ${WAIT} localhost:5050
+
+    docker-compose up -d portainer
+    ${WAIT} localhost:9000
+}
+
+stop() {
+    cd ${DIR}
+    docker-compose stop
+}
+
+case $1 in
+    start) start;;
+    stop) stop;;
+    "") start;;
+    *) echo "Usage: ./service start|stop"
+esac
