@@ -69,5 +69,6 @@ class BathroomVentFan(hass.Hass):
         """When the humidity changes, check if it is within the threshold to
         turn off."""
         self.log("Detected humidity change")
-        if float(self.get_state(self.humidity_sensor)) < self.humidity_max:
-            self.turn_off(kwargs)
+        if self.humidity:
+            if float(self.get_state(self.humidity_sensor)) < self.humidity_max:
+                self.turn_off(kwargs)

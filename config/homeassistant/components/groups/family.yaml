@@ -1,0 +1,7 @@
+---
+
+family:
+  name: Family
+  entities:
+    - person.zack
+    - person.nicole

@@ -26,3 +26,9 @@ bathroom_vent_fan:
   fan: fan.office_fan_switch_level
   trend_sensor: binary_sensor.master_bathroom_humidity_rising_3_min
   humidity_sensor: sensor.master_bathroom_multisensor_relative_humidity
+
+christmas_tree_lights:
+  module: christmas_tree_lights
+  class: ChristmasTreeLights
+  lights: light.christmas_lights
+  people: group.family
