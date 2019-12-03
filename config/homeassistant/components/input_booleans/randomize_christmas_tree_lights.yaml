@@ -1,0 +1,6 @@
+---
+
+randomize_christmas_tree_lights:
+  name: Randomize Christmas Tree Lights
+  initial: True
+  icon: mdi:shuffle-variant

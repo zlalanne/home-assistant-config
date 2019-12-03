@@ -1,0 +1,13 @@
+---
+
+christmas_tree:
+  name: Christmas Tree
+  entities:
+    - light.christmas_lights
+    - input_boolean.randomize_christmas_tree_lights
+    - sensor.christmas_lights_free_memory
+    - sensor.christmas_lights_uptime
+    - sensor.christmas_lights_estimated_current
+    - switch.christmas_lights_sync_receive
+    - switch.christmas_lights_nightlight
+    - switch.christmas_lights_sync_send
