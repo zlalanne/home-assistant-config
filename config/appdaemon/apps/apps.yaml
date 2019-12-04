@@ -31,4 +31,5 @@ christmas_tree_lights:
   module: christmas_tree_lights
   class: ChristmasTreeLights
   lights: light.christmas_lights
+  randomize: input_boolean.randomize_christmas_tree_lights
   people: group.family
