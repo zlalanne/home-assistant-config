@@ -45,7 +45,7 @@ class ChristmasTreeLights(hass.Hass):
         # List of effects to choose from. Tuples of (effect, color).
         effects = [
             ("Rainbow", None),
-            ("Solid", [255, 240, 255]),
+            ("Solid", [255, 238, 142]),
             ("Merry Christmas", None),
             # Railway with white
             ("Railway", [255, 240, 255]),
