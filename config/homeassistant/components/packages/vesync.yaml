@@ -1,5 +1,0 @@
----
-
-vesync:
-  username: !secret vesync_username
-  password: !secret vesync_password
