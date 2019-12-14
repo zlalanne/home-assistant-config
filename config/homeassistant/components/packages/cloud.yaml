@@ -7,7 +7,10 @@
 cloud:
   google_actions:
     filter:
-      exclude_domains:
-        - group
-        - script
-        - vacuum
+      include_entities:
+        - cover.garage_door
+        - fan.office_fan_switch_level
+        - light.christmas_lights
+        - light.living_room_light
+        - light.nursery_string_lights
+        - light.shop_lights
