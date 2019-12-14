@@ -1,6 +1,0 @@
----
-# Office floor lamp on left side of room, using a Z-Wave plug
-
-platform: switch
-name: Office Lamp Left
-entity_id: switch.office_plug_right
