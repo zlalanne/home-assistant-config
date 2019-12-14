@@ -1,6 +1,6 @@
 ---
 
 
-platform: flux
-lights:
-  - light.kitchen_lights
+#platform: flux
+#lights:
+#  - light.kitchen_lights

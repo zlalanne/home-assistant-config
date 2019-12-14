@@ -1,0 +1,10 @@
+---
+# Refresh Circadian Lighting values on bootup
+
+alias: Start Circadian Lighting on Bootup
+initial_state: "on"
+trigger:
+  - platform: homeassistant
+    event: start
+action:
+  - service: circadian_lighting.values_update

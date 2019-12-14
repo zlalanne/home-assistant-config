@@ -1,0 +1,8 @@
+---
+
+platform: circadian_lighting
+name: Circadian Lighting
+lights_brightness:
+  - light.christmas_lights
+lights_ct:
+  - light.kitchen_lights

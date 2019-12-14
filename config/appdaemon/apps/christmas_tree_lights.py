@@ -1,7 +1,8 @@
 import datetime
 import random
-import appdaemon.plugins.hass.hassapi as hass
 import sys
+
+import appdaemon.plugins.hass.hassapi as hass
 
 MORNING_TIME = datetime.time(5, 0, 0)
 NIGHT_TIME = datetime.time(22, 0, 0)
@@ -23,12 +24,14 @@ class ChristmasTreeLights(hass.Hass):
         # Turn off if everyone leaves home
         self.listen_state(self.turn_off, entity=self.people, new="not_home", old="home")
 
-        self.run_once(self.turn_on_timer, MORNING_TIME)
-
-        self.run_once(self.turn_off_timer, NIGHT_TIME)
+        self.run_daily(self.turn_on_timer, MORNING_TIME)
+        self.run_daily(self.turn_off_timer, NIGHT_TIME)
 
         # Initialize a timer handle for random effects
         self.random_timer_handle = None
+
+        # Keep a variable to determine if the lights are already on
+        self.on = False
 
         # Should we turn on lights at startup
         if self.get_state(self.people) == "home":
@@ -37,8 +40,9 @@ class ChristmasTreeLights(hass.Hass):
                 self.turn_on_lights()
 
     def turn_on(self, entity, attribute, old, new, kwargs):
-        self.log("Someone came home")
-        self.turn_on_lights()
+        # Check if lights are already on
+        if not self.on:
+            self.turn_on_lights()
 
     def turn_on_timer(self, kwargs):
         # Make sure someone is home
@@ -47,6 +51,7 @@ class ChristmasTreeLights(hass.Hass):
             self.turn_on_lights()
 
     def turn_on_lights(self):
+
         self.log("Turning on lights")
 
         # List of effects to choose from. Tuples of (effect, color).
@@ -81,6 +86,7 @@ class ChristmasTreeLights(hass.Hass):
             self.call_service(
                 "light/turn_on", entity_id=self.lights, effect="Merry Christmas"
             )
+        self.on = True
 
     def turn_off(self, entity, attribute, old, new, kwargs):
         self.turn_off_lights()
@@ -93,3 +99,4 @@ class ChristmasTreeLights(hass.Hass):
         self.call_service("light/turn_off", entity_id=self.lights)
         self.cancel_timer(self.random_timer_handle)
         self.random_timer_handle = None
+        self.on = False
