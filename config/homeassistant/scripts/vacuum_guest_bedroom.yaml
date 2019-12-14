@@ -7,4 +7,4 @@ vacuum_guest_bedroom:
       data:
         entity_id: vacuum.xiaomi_vacuum_cleaner
         command: app_zoned_clean
-        params: [[11696, 39400, 17946, 44700, 1]]
+        params: [[12057, 39816, 16457, 44716, 1]]

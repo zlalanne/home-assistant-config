@@ -25,9 +25,6 @@ start() {
     docker-compose up -d mosquitto
     ${WAIT} localhost:1883
 
-    docker-compose up -d icbinv
-    ${WAIT} localhost:3030
-
     docker-compose up -d esphome
     ${WAIT} localhost:6052
 

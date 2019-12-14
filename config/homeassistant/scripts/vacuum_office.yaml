@@ -7,4 +7,4 @@ vacuum_office:
       data:
         entity_id: vacuum.xiaomi_vacuum_cleaner
         command: app_zoned_clean
-        params: [[21988, 24333, 27088, 29083, 1]]
+        params: [[22302, 24782, 27252, 29182, 1]]

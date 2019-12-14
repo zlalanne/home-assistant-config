@@ -21,12 +21,3 @@ cards:
           - fan.office_fan_switch_level
   - type: thermostat
     entity: climate.office
-  - type: "custom:valetudo-map-card"
-    entity: sensor.valetudo_map
-    rotate: 0
-    crop:
-      top: 70
-      bottom: 70
-      left: 20
-      right: 20
-    min_height: 0

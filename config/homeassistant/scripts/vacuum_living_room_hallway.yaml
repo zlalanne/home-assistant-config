@@ -7,4 +7,4 @@ vacuum_living_room_hallway:
       data:
         entity_id: vacuum.xiaomi_vacuum_cleaner
         command: app_zoned_clean
-        params: [[15276, 29890, 20576, 31590, 1]]
+        params: [[15361, 29916, 20311, 31666, 1]]

@@ -7,4 +7,4 @@ vacuum_nursery:
       data:
         entity_id: vacuum.xiaomi_vacuum_cleaner
         command: app_zoned_clean
-        params: [[17945, 37840, 22795, 44540, 1]]
+        params: [[19538, 38237, 22988, 44737, 1]]

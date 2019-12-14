@@ -8,7 +8,6 @@
 # the tabs of the view in the UI.
 #
 title: Home Control Panel
-resources: !include_dir_list lovelace/resources
 views:
   - !include lovelace/views/dashboard.yaml
   - !include lovelace/views/inside.yaml
