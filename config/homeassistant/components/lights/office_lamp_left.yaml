@@ -1,0 +1,6 @@
+---
+# Office lamp to the left of desk
+
+platform: switch
+name: Office Lamp left
+entity_id: switch.plug_1

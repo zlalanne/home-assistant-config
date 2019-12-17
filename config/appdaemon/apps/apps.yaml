@@ -37,3 +37,5 @@ christmas_tree_lights:
 home_notification:
   module: home_notification
   class: HomeNotification
+  lights: light.office_lamp_left
+  garage_door: cover.garage_door
