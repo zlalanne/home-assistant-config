@@ -33,3 +33,7 @@ christmas_tree_lights:
   lights: light.christmas_lights
   randomize: input_boolean.randomize_christmas_tree_lights
   people: group.family
+
+home_notification:
+  module: home_notification
+  class: HomeNotification
