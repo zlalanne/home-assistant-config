@@ -1,0 +1,15 @@
+---
+#
+# Taken from: https://esphome-configs.io/devices/awp04l/
+#
+
+substitutions:
+  device_name: plug1
+  device_description: Office lamp plug
+  friendly_name: Plug 1
+  wattage_calibration: "4054.3 -> 721.2"
+  amperage_calibration: "7.4 -> 6.103"
+  voltage_calibration1: "294.7 -> 117.8"
+  voltage_calibration2: "321.7 -> 121.6"
+
+<<: !include awp04l.yaml
