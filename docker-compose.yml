@@ -93,7 +93,7 @@ services:
     ports:
       - "9000:9000"
   esphome:
-    image: esphome/esphome:1.13.6
+    image: esphome/esphome:1.14.3
     user: 1000:1000
     volumes:
       - ./config/homeassistant/esphome:/config

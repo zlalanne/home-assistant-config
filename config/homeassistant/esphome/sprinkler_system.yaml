@@ -59,4 +59,4 @@ ota:
 
 text_sensor:
   - platform: version
-    name: esphome_sprinkler_system_esphome_version
+    name: Sprinkler ESPHome Version

@@ -43,4 +43,4 @@ ota:
 
 text_sensor:
   - platform: version
-    name: esphome_office_esphome_version
+    name: Office ESPHome Version

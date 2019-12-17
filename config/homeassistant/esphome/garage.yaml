@@ -78,4 +78,4 @@ ota:
 
 text_sensor:
   - platform: version
-    name: esphome_garage_esphome_version
+    name: Garage ESPHome Version
