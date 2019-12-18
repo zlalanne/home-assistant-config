@@ -19,3 +19,5 @@ recorder:
   exclude:
     entities:
       - sensor.valetudo_map
+      - sensor.plug_1_uptime
+      - sensor.time_until_next_longhorn_game
