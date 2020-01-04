@@ -3,8 +3,6 @@
 esphome:
   name: esphome
   entities:
-    - sensor.esphome_garage_esphome_version
     - sensor.esphome_office_esphome_version
     - sensor.esphome_sprinkler_system_esphome_version
-    - sensor.esphome_shh_machine_esphome_version
     - sensor.plug_1_esphome_version

@@ -7,6 +7,8 @@ entities:
   light.living_room_light:
     state: true
     brightness_pct: 20
+  light.office_desk:
+    state: true
   light.office_lamp_left:
     state: true
   switch.flux:
