@@ -15,10 +15,14 @@ class MP3PlayerOutput : public Component, public BinaryOutput {
 
   void setup() override {
     softwareSerial.begin(9600);
+
+    // 3 second delay while MP3 player powers up
+    delay(3000);
+
     if (!dfplayer.begin(softwareSerial)) {
-      while(true){
-        delay(0);
-      }
+       while(true){
+         delay(0);
+       }
     }
     dfplayer.volume(30);
   }

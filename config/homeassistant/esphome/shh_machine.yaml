@@ -1,13 +1,16 @@
 ---
 
 esphome:
-  name: shh_machine
+  name: sound_machine
   platform: ESP8266
   board: nodemcuv2
-  includes:
-    - mp3_player.h
-  libraries:
-    - DFRobotDFPlayerMini@1.0.5
+
+uart:
+  tx_pin: D2
+  rx_pin: D5
+  baud_rate: 9600
+
+dfplayer:
 
 wifi:
   ssid: !secret wifi_ssid
@@ -18,7 +21,7 @@ wifi:
     gateway: 192.168.1.1
 
 status_led:
-  pin: 16
+  pin: D0
 
 # Enable logging
 logger:
@@ -28,24 +31,38 @@ api:
 
 ota:
 
-output:
-  - platform: custom
-    type: binary
-    lambda: |-
-      auto mp3player_output = new MP3PlayerOutput();
-      App.register_component(mp3player_output);
-      return {mp3player_output};
-    outputs:
-      id: mp3_player
-
-# Switch to control sound playing
+# Switches for tracks to play
 switch:
-  - platform: output
-    id: shh_machine
-    name: Shh Machine
-    output: "mp3_player"
+  - platform: template
+    name: "Waves Crashing"
+    id: waves_crashing
+    optimistic: true
+    turn_on_action:
+      then:
+        - switch.turn_off: waves_and_kids
+        - delay: 1s
+        - dfplayer.play:
+            file: 1
+            loop: true
+    turn_off_action:
+      then:
+        - dfplayer.stop
+  - platform: template
+    name: "Waves and Kids"
+    id: waves_and_kids
+    turn_on_action:
+      then:
+        - switch.turn_off: waves_crashing
+        - delay: 1s
+        - dfplayer.play:
+            file: 2
+            loop: true
+    optimistic: true
+    turn_off_action:
+      then:
+        - dfplayer.stop
 
-# Physical button for local override
+# Physical buttons for local override
 binary_sensor:
   - platform: gpio
     name: Button
@@ -58,8 +75,20 @@ binary_sensor:
       - delayed_off: 10ms
     on_release:
       then:
-        switch.toggle: shh_machine
+        - switch.toggle: waves_crashing
+  - platform: gpio
+    name: Button
+    internal: true
+    pin:
+      number: 12
+      mode: INPUT_PULLUP
+    filters:
+      - delayed_on: 10ms
+      - delayed_off: 10ms
+    on_release:
+      then:
+        - switch.toggle: waves_and_kids
 
 text_sensor:
   - platform: version
-    name: esphome_shh_machine_esphome_version
+    name: Sound Machine ESPHome Version
