@@ -13,4 +13,8 @@ cloud:
         - light.christmas_lights
         - light.living_room_light
         - light.nursery_string_lights
+        - light.office_desk
+        - light.office_lamp_left
         - light.shop_lights
+        - switch.waves_and_kids
+        - switch.waves_crashing
