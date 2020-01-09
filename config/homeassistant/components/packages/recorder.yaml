@@ -18,6 +18,6 @@ recorder:
   # Ignore some entities that generate lots of data and aren't useful
   exclude:
     entities:
-      - sensor.valetudo_map
       - sensor.plug_1_uptime
+      - sensor.sound_machine_uptime
       - sensor.time_until_next_longhorn_game
