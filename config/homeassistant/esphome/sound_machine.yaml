@@ -24,9 +24,6 @@ wifi:
 
 captive_portal:
 
-status_led:
-  pin: D0
-
 # Enable logging
 logger:
 
