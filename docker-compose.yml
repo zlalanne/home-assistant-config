@@ -4,7 +4,7 @@ version: "3"
 
 services:
   homeassistant:
-    image: homeassistant/home-assistant:0.102.3
+    image: homeassistant/home-assistant:0.104.2
     user: 1000:1000
     volumes:
       - ./config/homeassistant/:/config
@@ -47,7 +47,7 @@ services:
     depends_on:
       - homeassistant
   influxdb:
-    image: influxdb:1.7.6
+    image: influxdb:1.7.9
     user: 1000:1000
     volumes:
       - ./config/influxdb:/var/lib/influxdb
@@ -65,7 +65,7 @@ services:
     depends_on:
       - influxdb
   mosquitto:
-    image: eclipse-mosquitto:1.6.3
+    image: eclipse-mosquitto:1.6.8
     user: 1000:1000
     volumes:
       - ./config/mosquitto/data:/mosquitto/data
@@ -84,7 +84,7 @@ services:
     ports:
       - "8008:8008"
   portainer:
-    image: portainer/portainer:1.21.0
+    image: portainer/portainer:1.23.0
     user: 1000:999
     volumes:
       - ./config/portainer:/data
