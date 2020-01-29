@@ -1,0 +1,13 @@
+---
+
+alias: Notify Remote UI Disconnected
+trigger:
+  - platform: state
+    entity_id: binary_sensor.remote_ui
+    to: "off"
+    from: "on"
+action:
+  - service: notify.zack_telegram
+    data:
+      message: "Home Assistant Remote UI disconnected"
+      title: "Home Assistant Remote UI"
