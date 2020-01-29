@@ -4,6 +4,6 @@ platform: circadian_lighting
 name: Circadian Lighting
 lights_brightness:
   - light.christmas_lights
-  - light.office_desk
 lights_ct:
   - light.kitchen_lights
+  - light.office_desk

@@ -11,6 +11,7 @@ cloud:
         - cover.garage_door
         - fan.office_fan_switch_level
         - light.christmas_lights
+        - light.kitchen_lights
         - light.living_room_light
         - light.nursery_string_lights
         - light.office_desk

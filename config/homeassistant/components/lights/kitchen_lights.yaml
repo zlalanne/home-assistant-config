@@ -1,8 +1,7 @@
 ---
-# Combine the two sets of string lights into a group
+# Combine the two sets of LED cabinet lighting into one group
 
 platform: group
 name: Kitchen Lights
 entities:
-  - light.kitchen_leds_left
-  - light.kitchen_leds_right
+  - light.kitchen_left
